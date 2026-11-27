@@ -1,8 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { FAMILY_PALETTE } from '@talogic-automation/react'
-import { FREE_HUES, PRODUCT_HUES } from '@talogic-automation/react'
-import { DENSITIES, HUES, PALETTE_STEPS, PRODUCTS } from '@talogic-automation/react'
-import { ThemeRoot } from '@talogic-automation/react'
+import {
+  DENSITIES,
+  FAMILY_PALETTE,
+  FREE_HUES,
+  HUES,
+  type Hue,
+  logoColorForHue,
+  PALETTE_STEPS,
+  PRODUCT_CATALOGUE,
+  PRODUCT_HUES,
+  PRODUCTS,
+  readableLabel,
+  ThemeRoot,
+} from '@talogic-automation/react'
 
 const meta = {
   title:      'Foundations/Tokens',
@@ -14,31 +24,107 @@ type Story = StoryObj<typeof meta>
 
 const NEUTRALS = ['background', 'foreground', 'card', 'popover', 'primary', 'secondary', 'muted', 'muted-foreground', 'accent', 'border', 'input', 'ring', 'canvas', 'sidebar', 'brand', 'brand-text', 'brand-soft', 'destructive', 'success', 'warning', 'info']
 
-/** The family palette: 12 hues by 11 steps, the same OKLCH lightness per step. Steps 500, 700 and 100 carry product accents. */
+/** The logo colours of a hue: the exact colours of the products that own it, or the colour the rule proposes. */
+function logoSwatches (hue: Hue): { color: string, label: string, proposed: boolean }[] {
+  const owners = PRODUCTS.filter((product) => PRODUCT_HUES[product] === hue)
+  if (owners.length > 0) {
+    const colors = [...new Set(owners.map((product) => PRODUCT_CATALOGUE[product].logoColor))]
+
+    return colors.map((color) => ({ color, label: owners.filter((product) => PRODUCT_CATALOGUE[product].logoColor === color).join(', '), proposed: false }))
+  }
+
+  return [FREE_HUES.includes(hue) ? { color: logoColorForHue(hue), label: 'proposed', proposed: true } : { color: '#e5484d', label: 'logo accent', proposed: false }]
+}
+
+/**
+ * The family palette: 12 hues by 11 steps, the same OKLCH lightness per step. Steps 500, 700 and 100 carry product
+ * accents. The last column is the logo colour: exact for the products, proposed by the logo rule for the free hues.
+ */
 export const FamilyPalette: Story = {
   render: () => (
     <div className='flex flex-col gap-1'>
-      <div className='grid grid-cols-[120px_repeat(11,minmax(0,1fr))] gap-1 text-xs font-semibold'>
+      <div className='grid grid-cols-[120px_repeat(11,minmax(0,1fr))_110px] gap-1 text-xs font-semibold'>
         <span />
         {PALETTE_STEPS.map((step) => <span key={step} className='text-center'>{step}</span>)}
+        <span className='text-center'>Logo</span>
       </div>
       {HUES.map((hue) => {
         const owners = PRODUCTS.filter((product) => PRODUCT_HUES[product] === hue)
 
         return (
-          <div key={hue} className='grid grid-cols-[120px_repeat(11,minmax(0,1fr))] gap-1'>
+          <div key={hue} className='grid grid-cols-[120px_repeat(11,minmax(0,1fr))_110px] gap-1'>
             <span className='flex flex-col justify-center text-[13px] font-semibold'>
               {hue}
               <span className='text-xs font-normal text-muted-foreground'>{owners.length > 0 ? owners.join(', ') : (FREE_HUES.includes(hue) ? 'free' : 'status only')}</span>
             </span>
-            {PALETTE_STEPS.map((step, index) => (
-              <span key={step} className='flex h-12 items-end rounded-sm p-1.5 font-mono text-[10px]' style={{ background: FAMILY_PALETTE[hue][step], color: index <= 5 ? '#14121a' : '#ffffff' }}>
+            {PALETTE_STEPS.map((step) => (
+              <span key={step} className='flex h-12 items-end rounded-sm p-1.5 font-mono text-[10px]' style={{ background: FAMILY_PALETTE[hue][step], color: readableLabel(FAMILY_PALETTE[hue][step]) }}>
                 {FAMILY_PALETTE[hue][step]}
               </span>
             ))}
+            <span className='flex gap-1'>
+              {logoSwatches(hue).map((swatch) => (
+                <span
+                  key={swatch.color}
+                  title={swatch.label}
+                  className={`flex h-12 flex-1 flex-col justify-end rounded-sm p-1.5 font-mono text-[10px] ${swatch.proposed ? 'outline-2 outline-offset-1 outline-dashed outline-foreground/40' : ''}`}
+                  style={{ background: swatch.color, color: readableLabel(swatch.color) }}
+                >
+                  <span>{swatch.color}</span>
+                  <span className='font-sans'>{swatch.label}</span>
+                </span>
+              ))}
+            </span>
           </div>
         )
       })}
+    </div>
+  ),
+}
+
+/**
+ * The logo colours: the exact colours of the logo files, and the colour the rule proposes for each free hue.
+ * Logo colours are for the logo only; the interface uses the palette step of the hue.
+ */
+export const LogoColours: Story = {
+  render: () => (
+    <div className='flex max-w-3xl flex-col gap-6'>
+      <div className='flex flex-col gap-2 text-[13px]'>
+        <h2 className='m-0 type-h3'>The logo rule</h2>
+        <p className='m-0'>
+          The Talogic, pargic, ingic and loomgic logos are HSL saturation 70 % and lightness 55 %. On yellow and green
+          that pair is too bright, so daygic and loregic are darker: no logo is lighter than OKLCH lightness 0.70.
+        </p>
+        <p className='m-0'>
+          A new product takes a free hue. Its logo colour is HSL saturation 70 % and lightness 55 % at the hue of the
+          palette&apos;s step 500, made darker in half-percent steps until its OKLCH lightness is 0.70 or less
+          (<span className='font-mono'>logoColorForHue(hue)</span>). Existing logos keep their exact colours.
+        </p>
+      </div>
+      <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3'>
+        {PRODUCTS.map((product) => {
+          const { name, logoColor, logoAccents = [] } = PRODUCT_CATALOGUE[product]
+
+          return (
+            <div key={product} className='flex flex-col gap-1.5 text-[13px]'>
+              <span className='flex h-16 items-end rounded-lg p-2 font-mono text-xs' style={{ background: logoColor, color: readableLabel(logoColor) }}>{logoColor}</span>
+              <span className='font-semibold'>{name}</span>
+              <span className='text-xs text-muted-foreground'>{PRODUCT_HUES[product]} hue{logoAccents.length > 0 ? ` · also ${logoAccents.join(', ')}` : ''}</span>
+            </div>
+          )
+        })}
+        {FREE_HUES.map((hue) => {
+          const color = logoColorForHue(hue)
+
+          return (
+            <div key={hue} className='flex flex-col gap-1.5 text-[13px]'>
+              <span className='flex h-16 items-end rounded-lg p-2 font-mono text-xs outline-2 outline-offset-1 outline-dashed outline-foreground/40' style={{ background: color, color: readableLabel(color) }}>{color}</span>
+              <span className='font-semibold'>Proposed · {hue}</span>
+              <span className='text-xs text-muted-foreground'>for a new product</span>
+            </div>
+          )
+        })}
+      </div>
     </div>
   ),
 }

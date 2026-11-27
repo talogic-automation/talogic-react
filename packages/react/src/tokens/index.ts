@@ -1,6 +1,7 @@
 export { apcaContrast, LABEL_COLORS, readableLabel } from './apca-contrast.algorithm'
 export type { LabelColor } from './apca-contrast.algorithm'
 export { HUE_FILL } from './hue-fill.style'
+export { LOGO_RULE, logoColorForHue } from './logo-color.algorithm'
 export { FAMILY_PALETTE } from './palette.style'
 export { FREE_HUES, hueForProduct, PRODUCT_HUES } from './product-hue.policy'
 export { COLOUR_SCHEMES, DENSITIES, HUES, PALETTE_STEPS, PRODUCTS } from './theme.contract'

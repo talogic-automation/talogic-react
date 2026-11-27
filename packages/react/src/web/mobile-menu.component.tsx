@@ -33,7 +33,7 @@ interface ToggleBox {
 
 /**
  * The mobile menu of a website. The panel grows out of the toggle as a circle while the page behind blurs and turns
- * grey, and the links slide in one after another. The toggle twirls into an X and back. With reduced motion, the
+ * grey, and the links fade in one after another. The toggle twirls into an X and back. With reduced motion, the
  * panel and the backdrop only fade.
  *
  * @param props - Links, actions, the navigation label and the toggle's classes.

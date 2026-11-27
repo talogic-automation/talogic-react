@@ -409,11 +409,9 @@
     to { clip-path: circle(0 at var(--menu-origin-x, 100%) var(--menu-origin-y, 0)); }
   }
 
+  /* The links only fade in, one after another: they do not move, so the text stays still while it appears. */
   @keyframes menu-item-in {
-    from {
-      opacity: 0;
-      translate: 16px 0;
-    }
+    from { opacity: 0; }
   }
 
   /* The toggle: the outer lines fall to the centre, then twirl a half turn past each other into the X. */

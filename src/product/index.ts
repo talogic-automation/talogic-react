@@ -1,0 +1,6 @@
+export { PRODUCT_CATALOGUE } from './product-catalogue.content'
+export type { ProductEntry } from './product-catalogue.content'
+export { ProductLogo } from './product-logo.component'
+export type { ProductLogoProps } from './product-logo.component'
+export { ProductSwitcher } from './product-switcher.component'
+export type { ProductSwitcherProps } from './product-switcher.component'

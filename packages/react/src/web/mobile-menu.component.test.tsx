@@ -52,3 +52,16 @@ describe('MobileMenu', () => {
     expect(screen.getByRole('button', { name: 'Open menu' }).querySelector('[data-slot="menu-icon"]')).not.toHaveAttribute('data-state')
   })
 })
+
+describe('MobileMenu toggles', () => {
+  it('hides the page toggle icon while the menu draws its own over it', async () => {
+    render(<MobileMenu links={links} />)
+    const pageIcon = screen.getByRole('button', { name: 'Open menu' }).querySelector('[data-slot="menu-icon"]')
+
+    expect(pageIcon).not.toHaveClass('invisible')
+
+    await userEvent.click(screen.getByRole('button', { name: 'Open menu' }))
+
+    expect(pageIcon).toHaveClass('invisible')
+  })
+})

@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from 'radix-ui'
-import { type CSSProperties, type ReactNode, useRef, useState } from 'react'
+import { type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react'
 import { cn } from '../class-names'
 import { Button, MenuIcon } from '../ui'
 
@@ -20,6 +20,9 @@ export interface MobileMenuProps {
   className?: string
 }
 
+/** How long the menu takes to close: the hold animation of its content (menu-hold, 400 ms). */
+const CLOSE_MS = 400
+
 /** Where the toggle is on screen when the menu opens. */
 interface ToggleBox {
   left:   number
@@ -39,11 +42,36 @@ interface ToggleBox {
 export function MobileMenu ({ links, actions, label = 'Main', className }: MobileMenuProps) {
   const [open, setOpen] = useState(false)
   const [toggle, setToggle] = useState<ToggleBox>()
+  // True from the open until the close animation ends. The page's toggle hides its own icon all that time, so only
+  // the menu's toggle (drawn over it) shows bars, and the two icons never draw on top of each other.
+  const [covered, setCovered] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
 
-  function changeOpen (next: boolean): void {
+  useEffect(() => {
+    if (open) return
+    const timer = setTimeout(() => setCovered(false), CLOSE_MS)
+
+    return () => clearTimeout(timer)
+  }, [open])
+
+  // Measure the toggle again whenever the page's box changes while the menu is open (the scroll lock removing the
+  // scrollbar, a rotation, a resize), so the menu's toggle and the reveal's centre stay on the page's toggle.
+  useEffect(() => {
+    if (!open) return
+    const observer = new ResizeObserver(() => measure())
+    observer.observe(document.documentElement)
+
+    return () => observer.disconnect()
+  }, [open])
+
+  function measure (): void {
     const box = toggleRef.current?.getBoundingClientRect()
-    if (next && box) setToggle({ left: box.left, top: box.top, width: box.width, height: box.height })
+    if (box) setToggle({ left: box.left, top: box.top, width: box.width, height: box.height })
+  }
+
+  function changeOpen (next: boolean): void {
+    if (next) measure()
+    if (next) setCovered(true)
     setOpen(next)
   }
 
@@ -54,7 +82,7 @@ export function MobileMenu ({ links, actions, label = 'Main', className }: Mobil
   return (
     <DialogPrimitive.Root open={open} onOpenChange={changeOpen}>
       <DialogPrimitive.Trigger asChild>
-        <Button ref={toggleRef} variant='ghost' size='icon' aria-label='Open menu' className={className}><MenuIcon /></Button>
+        <Button ref={toggleRef} variant='ghost' size='icon' aria-label='Open menu' className={className}><MenuIcon className={covered ? 'invisible' : undefined} /></Button>
       </DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay

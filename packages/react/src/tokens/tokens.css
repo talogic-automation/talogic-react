@@ -398,16 +398,10 @@
     to { opacity: 1; }
   }
 
-  /* The panel grows out of the toggle as a circle, with a short slide in from the toggle's side. */
+  /* The panel grows out of the toggle as a circle centred on it. Nothing else moves, so the circle starts exactly at the toggle. */
   @keyframes menu-reveal {
-    from {
-      clip-path: circle(0 at var(--menu-origin-x, 100%) var(--menu-origin-y, 0));
-      translate: 12px -6px;
-    }
-    to {
-      clip-path: circle(110vmax at var(--menu-origin-x, 100%) var(--menu-origin-y, 0));
-      translate: 0 0;
-    }
+    from { clip-path: circle(0 at var(--menu-origin-x, 100%) var(--menu-origin-y, 0)); }
+    to { clip-path: circle(110vmax at var(--menu-origin-x, 100%) var(--menu-origin-y, 0)); }
   }
 
   @keyframes menu-conceal {

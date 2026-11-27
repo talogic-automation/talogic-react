@@ -365,6 +365,102 @@
   --shadow-lg: var(--elevation-lg);
 }
 
+/*
+ * Motion. The mobile menu reveals from its toggle: --menu-origin-x and --menu-origin-y (set by the component) are
+ * the centre of the toggle, in viewport pixels. Each animation has a reduced-motion fade beside it.
+ */
+@theme {
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-emphasised: cubic-bezier(0.2, 0, 0, 1);
+
+  --animate-fade-in: fade-in 180ms ease-out both;
+  --animate-fade-out: fade-out 160ms ease-in both;
+  --animate-menu-reveal: menu-reveal 560ms cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-menu-conceal: menu-conceal 380ms cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-menu-item-in: menu-item-in 360ms var(--ease-emphasised) both;
+  --animate-menu-line-top-open: menu-line-top-open 460ms var(--ease-overshoot) both;
+  --animate-menu-line-top-close: menu-line-top-close 400ms var(--ease-emphasised) both;
+  --animate-menu-line-bottom-open: menu-line-bottom-open 460ms var(--ease-overshoot) both;
+  --animate-menu-line-bottom-close: menu-line-bottom-close 400ms var(--ease-emphasised) both;
+  --animate-menu-line-middle-open: menu-line-middle-open 260ms var(--ease-emphasised) both;
+  --animate-menu-line-middle-close: menu-line-middle-close 300ms var(--ease-emphasised) 120ms both;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+  }
+
+  @keyframes fade-out {
+    to { opacity: 0; }
+  }
+
+  /* Keeps a closing dialog mounted while its children play their exit animations. */
+  @keyframes menu-hold {
+    to { opacity: 1; }
+  }
+
+  /* The panel grows out of the toggle as a circle, with a short slide in from the toggle's side. */
+  @keyframes menu-reveal {
+    from {
+      clip-path: circle(0 at var(--menu-origin-x, 100%) var(--menu-origin-y, 0));
+      translate: 12px -6px;
+    }
+    to {
+      clip-path: circle(110vmax at var(--menu-origin-x, 100%) var(--menu-origin-y, 0));
+      translate: 0 0;
+    }
+  }
+
+  @keyframes menu-conceal {
+    from { clip-path: circle(110vmax at var(--menu-origin-x, 100%) var(--menu-origin-y, 0)); }
+    to { clip-path: circle(0 at var(--menu-origin-x, 100%) var(--menu-origin-y, 0)); }
+  }
+
+  @keyframes menu-item-in {
+    from {
+      opacity: 0;
+      translate: 16px 0;
+    }
+  }
+
+  /* The toggle: the outer lines fall to the centre, then twirl a half turn past each other into the X. */
+  @keyframes menu-line-top-open {
+    0% { translate: 0 0; rotate: 0deg; }
+    40% { translate: 0 5px; rotate: 0deg; }
+    100% { translate: 0 5px; rotate: 225deg; }
+  }
+
+  @keyframes menu-line-top-close {
+    0% { translate: 0 5px; rotate: 225deg; }
+    60% { translate: 0 5px; rotate: 360deg; }
+    100% { translate: 0 0; rotate: 360deg; }
+  }
+
+  @keyframes menu-line-bottom-open {
+    0% { translate: 0 0; rotate: 0deg; }
+    40% { translate: 0 -5px; rotate: 0deg; }
+    100% { translate: 0 -5px; rotate: 135deg; }
+  }
+
+  @keyframes menu-line-bottom-close {
+    0% { translate: 0 -5px; rotate: 135deg; }
+    60% { translate: 0 -5px; rotate: 180deg; }
+    100% { translate: 0 0; rotate: 180deg; }
+  }
+
+  /* The middle line shrinks into a dot and pops away, and comes back the same way. */
+  @keyframes menu-line-middle-open {
+    0% { scale: 1 1; opacity: 1; }
+    60% { scale: 0.12 1; opacity: 1; }
+    100% { scale: 0 0; opacity: 0; }
+  }
+
+  @keyframes menu-line-middle-close {
+    0% { scale: 0 0; opacity: 0; }
+    40% { scale: 0.12 1; opacity: 1; }
+    100% { scale: 1 1; opacity: 1; }
+  }
+}
+
 /* Light theme. Neutrals lean slightly toward the Talogic violet. */
 :root {
   --background: #ffffff;

@@ -1,4 +1,6 @@
 export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from './breadcrumb.component'
+export { MenuIcon } from './menu-icon.component'
+export type { MenuIconProps } from './menu-icon.component'
 export { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from './menubar.component'
 export { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './navigation-menu.component'
 export { Pagination } from './pagination.component'

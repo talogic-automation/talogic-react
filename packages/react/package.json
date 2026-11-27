@@ -31,7 +31,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint . --cache",
     "format": "eslint . --fix --cache",
-    "test": "jest"
+    "test": "jest",
+    "tokens:labels": "node tools/write-label-tokens.mjs"
   },
   "peerDependencies": {
     "react": "^19.0.0",

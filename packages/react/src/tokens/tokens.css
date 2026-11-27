@@ -166,6 +166,142 @@
   --color-pink-800: #742651;
   --color-pink-900: #531b39;
   --color-pink-950: #331123;
+
+  /* Labels: the ink or white label that reads best on each family colour (APCA). */
+  /* generated:labels: written by npm run tokens:labels from the APCA rule; do not edit by hand */
+  --color-on-red-50: #14121a;
+  --color-on-red-100: #14121a;
+  --color-on-red-200: #14121a;
+  --color-on-red-300: #14121a;
+  --color-on-red-400: #14121a;
+  --color-on-red-500: #ffffff;
+  --color-on-red-600: #ffffff;
+  --color-on-red-700: #ffffff;
+  --color-on-red-800: #ffffff;
+  --color-on-red-900: #ffffff;
+  --color-on-red-950: #ffffff;
+  --color-on-orange-50: #14121a;
+  --color-on-orange-100: #14121a;
+  --color-on-orange-200: #14121a;
+  --color-on-orange-300: #14121a;
+  --color-on-orange-400: #14121a;
+  --color-on-orange-500: #ffffff;
+  --color-on-orange-600: #ffffff;
+  --color-on-orange-700: #ffffff;
+  --color-on-orange-800: #ffffff;
+  --color-on-orange-900: #ffffff;
+  --color-on-orange-950: #ffffff;
+  --color-on-amber-50: #14121a;
+  --color-on-amber-100: #14121a;
+  --color-on-amber-200: #14121a;
+  --color-on-amber-300: #14121a;
+  --color-on-amber-400: #14121a;
+  --color-on-amber-500: #ffffff;
+  --color-on-amber-600: #ffffff;
+  --color-on-amber-700: #ffffff;
+  --color-on-amber-800: #ffffff;
+  --color-on-amber-900: #ffffff;
+  --color-on-amber-950: #ffffff;
+  --color-on-lime-50: #14121a;
+  --color-on-lime-100: #14121a;
+  --color-on-lime-200: #14121a;
+  --color-on-lime-300: #14121a;
+  --color-on-lime-400: #14121a;
+  --color-on-lime-500: #ffffff;
+  --color-on-lime-600: #ffffff;
+  --color-on-lime-700: #ffffff;
+  --color-on-lime-800: #ffffff;
+  --color-on-lime-900: #ffffff;
+  --color-on-lime-950: #ffffff;
+  --color-on-green-50: #14121a;
+  --color-on-green-100: #14121a;
+  --color-on-green-200: #14121a;
+  --color-on-green-300: #14121a;
+  --color-on-green-400: #14121a;
+  --color-on-green-500: #ffffff;
+  --color-on-green-600: #ffffff;
+  --color-on-green-700: #ffffff;
+  --color-on-green-800: #ffffff;
+  --color-on-green-900: #ffffff;
+  --color-on-green-950: #ffffff;
+  --color-on-teal-50: #14121a;
+  --color-on-teal-100: #14121a;
+  --color-on-teal-200: #14121a;
+  --color-on-teal-300: #14121a;
+  --color-on-teal-400: #14121a;
+  --color-on-teal-500: #ffffff;
+  --color-on-teal-600: #ffffff;
+  --color-on-teal-700: #ffffff;
+  --color-on-teal-800: #ffffff;
+  --color-on-teal-900: #ffffff;
+  --color-on-teal-950: #ffffff;
+  --color-on-cyan-50: #14121a;
+  --color-on-cyan-100: #14121a;
+  --color-on-cyan-200: #14121a;
+  --color-on-cyan-300: #14121a;
+  --color-on-cyan-400: #14121a;
+  --color-on-cyan-500: #ffffff;
+  --color-on-cyan-600: #ffffff;
+  --color-on-cyan-700: #ffffff;
+  --color-on-cyan-800: #ffffff;
+  --color-on-cyan-900: #ffffff;
+  --color-on-cyan-950: #ffffff;
+  --color-on-sky-50: #14121a;
+  --color-on-sky-100: #14121a;
+  --color-on-sky-200: #14121a;
+  --color-on-sky-300: #14121a;
+  --color-on-sky-400: #14121a;
+  --color-on-sky-500: #ffffff;
+  --color-on-sky-600: #ffffff;
+  --color-on-sky-700: #ffffff;
+  --color-on-sky-800: #ffffff;
+  --color-on-sky-900: #ffffff;
+  --color-on-sky-950: #ffffff;
+  --color-on-blue-50: #14121a;
+  --color-on-blue-100: #14121a;
+  --color-on-blue-200: #14121a;
+  --color-on-blue-300: #14121a;
+  --color-on-blue-400: #14121a;
+  --color-on-blue-500: #ffffff;
+  --color-on-blue-600: #ffffff;
+  --color-on-blue-700: #ffffff;
+  --color-on-blue-800: #ffffff;
+  --color-on-blue-900: #ffffff;
+  --color-on-blue-950: #ffffff;
+  --color-on-violet-50: #14121a;
+  --color-on-violet-100: #14121a;
+  --color-on-violet-200: #14121a;
+  --color-on-violet-300: #14121a;
+  --color-on-violet-400: #14121a;
+  --color-on-violet-500: #ffffff;
+  --color-on-violet-600: #ffffff;
+  --color-on-violet-700: #ffffff;
+  --color-on-violet-800: #ffffff;
+  --color-on-violet-900: #ffffff;
+  --color-on-violet-950: #ffffff;
+  --color-on-purple-50: #14121a;
+  --color-on-purple-100: #14121a;
+  --color-on-purple-200: #14121a;
+  --color-on-purple-300: #14121a;
+  --color-on-purple-400: #14121a;
+  --color-on-purple-500: #ffffff;
+  --color-on-purple-600: #ffffff;
+  --color-on-purple-700: #ffffff;
+  --color-on-purple-800: #ffffff;
+  --color-on-purple-900: #ffffff;
+  --color-on-purple-950: #ffffff;
+  --color-on-pink-50: #14121a;
+  --color-on-pink-100: #14121a;
+  --color-on-pink-200: #14121a;
+  --color-on-pink-300: #14121a;
+  --color-on-pink-400: #14121a;
+  --color-on-pink-500: #ffffff;
+  --color-on-pink-600: #ffffff;
+  --color-on-pink-700: #ffffff;
+  --color-on-pink-800: #ffffff;
+  --color-on-pink-900: #ffffff;
+  --color-on-pink-950: #ffffff;
+  /* generated:labels-end */
 }
 
 @theme inline {
@@ -253,7 +389,7 @@
   --sidebar-border: #e8e6ee;
 
   --destructive: var(--color-red-600);
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: var(--color-on-red-600);
   --destructive-soft: var(--color-red-100);
   --success: var(--color-green-700);
   --success-soft: var(--color-green-100);
@@ -285,6 +421,8 @@
   --hue-300: var(--color-violet-300);
   --hue-400: var(--color-violet-400);
   --hue-500: var(--color-violet-500);
+  --hue-on-400: var(--color-on-violet-400);
+  --hue-on-500: var(--color-on-violet-500);
   --hue-700: var(--color-violet-700);
   --hue-950: var(--color-violet-950);
 }
@@ -315,7 +453,7 @@
   --sidebar-border: #24222b;
 
   --destructive: var(--color-red-400);
-  --destructive-foreground: #14121a;
+  --destructive-foreground: var(--color-on-red-400);
   --destructive-soft: var(--color-red-950);
   --success: var(--color-green-300);
   --success-soft: var(--color-green-950);
@@ -345,6 +483,8 @@
   --hue-300: var(--color-violet-300);
   --hue-400: var(--color-violet-400);
   --hue-500: var(--color-violet-500);
+  --hue-on-400: var(--color-on-violet-400);
+  --hue-on-500: var(--color-on-violet-500);
   --hue-700: var(--color-violet-700);
   --hue-950: var(--color-violet-950);
 }
@@ -353,6 +493,8 @@
   --hue-300: var(--color-orange-300);
   --hue-400: var(--color-orange-400);
   --hue-500: var(--color-orange-500);
+  --hue-on-400: var(--color-on-orange-400);
+  --hue-on-500: var(--color-on-orange-500);
   --hue-700: var(--color-orange-700);
   --hue-950: var(--color-orange-950);
 }
@@ -361,6 +503,8 @@
   --hue-300: var(--color-amber-300);
   --hue-400: var(--color-amber-400);
   --hue-500: var(--color-amber-500);
+  --hue-on-400: var(--color-on-amber-400);
+  --hue-on-500: var(--color-on-amber-500);
   --hue-700: var(--color-amber-700);
   --hue-950: var(--color-amber-950);
 }
@@ -369,6 +513,8 @@
   --hue-300: var(--color-blue-300);
   --hue-400: var(--color-blue-400);
   --hue-500: var(--color-blue-500);
+  --hue-on-400: var(--color-on-blue-400);
+  --hue-on-500: var(--color-on-blue-500);
   --hue-700: var(--color-blue-700);
   --hue-950: var(--color-blue-950);
 }
@@ -377,6 +523,8 @@
   --hue-300: var(--color-green-300);
   --hue-400: var(--color-green-400);
   --hue-500: var(--color-green-500);
+  --hue-on-400: var(--color-on-green-400);
+  --hue-on-500: var(--color-on-green-500);
   --hue-700: var(--color-green-700);
   --hue-950: var(--color-green-950);
 }
@@ -385,6 +533,8 @@
   --hue-300: var(--color-blue-300);
   --hue-400: var(--color-blue-400);
   --hue-500: var(--color-blue-500);
+  --hue-on-400: var(--color-on-blue-400);
+  --hue-on-500: var(--color-on-blue-500);
   --hue-700: var(--color-blue-700);
   --hue-950: var(--color-blue-950);
 }
@@ -394,6 +544,8 @@
   --hue-300: var(--color-red-300);
   --hue-400: var(--color-red-400);
   --hue-500: var(--color-red-500);
+  --hue-on-400: var(--color-on-red-400);
+  --hue-on-500: var(--color-on-red-500);
   --hue-700: var(--color-red-700);
   --hue-950: var(--color-red-950);
 }
@@ -402,6 +554,8 @@
   --hue-300: var(--color-orange-300);
   --hue-400: var(--color-orange-400);
   --hue-500: var(--color-orange-500);
+  --hue-on-400: var(--color-on-orange-400);
+  --hue-on-500: var(--color-on-orange-500);
   --hue-700: var(--color-orange-700);
   --hue-950: var(--color-orange-950);
 }
@@ -410,6 +564,8 @@
   --hue-300: var(--color-amber-300);
   --hue-400: var(--color-amber-400);
   --hue-500: var(--color-amber-500);
+  --hue-on-400: var(--color-on-amber-400);
+  --hue-on-500: var(--color-on-amber-500);
   --hue-700: var(--color-amber-700);
   --hue-950: var(--color-amber-950);
 }
@@ -418,6 +574,8 @@
   --hue-300: var(--color-lime-300);
   --hue-400: var(--color-lime-400);
   --hue-500: var(--color-lime-500);
+  --hue-on-400: var(--color-on-lime-400);
+  --hue-on-500: var(--color-on-lime-500);
   --hue-700: var(--color-lime-700);
   --hue-950: var(--color-lime-950);
 }
@@ -426,6 +584,8 @@
   --hue-300: var(--color-green-300);
   --hue-400: var(--color-green-400);
   --hue-500: var(--color-green-500);
+  --hue-on-400: var(--color-on-green-400);
+  --hue-on-500: var(--color-on-green-500);
   --hue-700: var(--color-green-700);
   --hue-950: var(--color-green-950);
 }
@@ -434,6 +594,8 @@
   --hue-300: var(--color-teal-300);
   --hue-400: var(--color-teal-400);
   --hue-500: var(--color-teal-500);
+  --hue-on-400: var(--color-on-teal-400);
+  --hue-on-500: var(--color-on-teal-500);
   --hue-700: var(--color-teal-700);
   --hue-950: var(--color-teal-950);
 }
@@ -442,6 +604,8 @@
   --hue-300: var(--color-cyan-300);
   --hue-400: var(--color-cyan-400);
   --hue-500: var(--color-cyan-500);
+  --hue-on-400: var(--color-on-cyan-400);
+  --hue-on-500: var(--color-on-cyan-500);
   --hue-700: var(--color-cyan-700);
   --hue-950: var(--color-cyan-950);
 }
@@ -450,6 +614,8 @@
   --hue-300: var(--color-sky-300);
   --hue-400: var(--color-sky-400);
   --hue-500: var(--color-sky-500);
+  --hue-on-400: var(--color-on-sky-400);
+  --hue-on-500: var(--color-on-sky-500);
   --hue-700: var(--color-sky-700);
   --hue-950: var(--color-sky-950);
 }
@@ -458,6 +624,8 @@
   --hue-300: var(--color-blue-300);
   --hue-400: var(--color-blue-400);
   --hue-500: var(--color-blue-500);
+  --hue-on-400: var(--color-on-blue-400);
+  --hue-on-500: var(--color-on-blue-500);
   --hue-700: var(--color-blue-700);
   --hue-950: var(--color-blue-950);
 }
@@ -466,6 +634,8 @@
   --hue-300: var(--color-violet-300);
   --hue-400: var(--color-violet-400);
   --hue-500: var(--color-violet-500);
+  --hue-on-400: var(--color-on-violet-400);
+  --hue-on-500: var(--color-on-violet-500);
   --hue-700: var(--color-violet-700);
   --hue-950: var(--color-violet-950);
 }
@@ -474,6 +644,8 @@
   --hue-300: var(--color-purple-300);
   --hue-400: var(--color-purple-400);
   --hue-500: var(--color-purple-500);
+  --hue-on-400: var(--color-on-purple-400);
+  --hue-on-500: var(--color-on-purple-500);
   --hue-700: var(--color-purple-700);
   --hue-950: var(--color-purple-950);
 }
@@ -482,6 +654,8 @@
   --hue-300: var(--color-pink-300);
   --hue-400: var(--color-pink-400);
   --hue-500: var(--color-pink-500);
+  --hue-on-400: var(--color-on-pink-400);
+  --hue-on-500: var(--color-on-pink-500);
   --hue-700: var(--color-pink-700);
   --hue-950: var(--color-pink-950);
 }
@@ -492,25 +666,27 @@
 [data-hue] {
   --brand: var(--hue-500);
   --primary: var(--hue-500);
-  --primary-foreground: #14121a;
+  --primary-foreground: var(--hue-on-500);
   --brand-text: var(--hue-700);
   --brand-soft: var(--hue-100);
   --ring: var(--hue-500);
   --sidebar-primary: var(--hue-500);
-  --sidebar-primary-foreground: #14121a;
+  --sidebar-primary-foreground: var(--hue-on-500);
   --sidebar-ring: var(--hue-500);
 }
 
-/* Dark: fill 400, text 300, soft 950. */
+/* Dark: fill 400, text 300, soft 950. The labels on fills come from the APCA rule, never a fixed colour. */
 .dark,
 .dark [data-product],
 .dark [data-hue] {
   --brand: var(--hue-400);
   --primary: var(--hue-400);
+  --primary-foreground: var(--hue-on-400);
   --brand-text: var(--hue-300);
   --brand-soft: var(--hue-950);
   --ring: var(--hue-400);
   --sidebar-primary: var(--hue-400);
+  --sidebar-primary-foreground: var(--hue-on-400);
   --sidebar-ring: var(--hue-400);
 }
 

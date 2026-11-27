@@ -77,8 +77,30 @@ const COLUMNS = [
   { title: 'Developers', links: [{ label: 'Docs', href: '/docs' }, { label: 'GitHub', href: '/github' }, { label: 'Status', href: '/status' }] },
 ]
 
-/** The site header, with a products panel and a mobile sheet below 768 px. */
+/** The site header, with a products panel, and the animated mobile menu below 768 px. */
 export const Header: Story = { render: () => <SiteHeader nav={NAV} actions={ACTIONS} /> }
+
+/**
+ * The mobile menu on a phone. Press the toggle: the panel grows out of it while the page blurs and turns grey,
+ * and the toggle twirls into an X. With reduced motion turned on in the system, the panel only fades.
+ */
+export const MobileMenu: Story = {
+  globals: { viewport: { value: 'mobile2', isRotated: false } },
+  render:  () => (
+    <div className='text-base'>
+      <SiteHeader nav={NAV} actions={ACTIONS} />
+      <Hero
+        eyebrow='Human focused automations'
+        title='Automation people can read, check and trust.'
+        lead='Talogic builds tools that turn messy work into clear records. Every product shows what it did and why.'
+        actions={<Button size='lg'>See the products</Button>}
+      />
+      <div className='grid gap-4 px-6 pb-12'>
+        {PRODUCT_LIST.map((product) => <ProductCard key={product} product={product} href={`/${product}`} />)}
+      </div>
+    </div>
+  ),
+}
 
 /** The hero of the institutional site. */
 export const HeroSection: Story = {

@@ -1,20 +1,15 @@
-import { Menu } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { cn } from '../class-names'
 import { ProductLogo } from '../product'
 import {
-  Button,
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
 } from '../ui'
+import { MobileMenu } from './mobile-menu.component'
 
 /** A link in the site navigation. */
 export interface SiteLink {
@@ -44,7 +39,7 @@ export interface SiteHeaderProps {
 
 /**
  * The SiteHeader pattern: a sticky, blurred bar with the brand, the main navigation and the actions. Below
- * 768 px the navigation moves into a sheet.
+ * 768 px the navigation moves into the animated {@link MobileMenu}.
  *
  * @param props - Navigation, actions and brand.
  * @returns The header.
@@ -89,20 +84,11 @@ export function SiteHeader ({ nav, actions, brand, className }: SiteHeaderProps)
           </NavigationMenuList>
         </NavigationMenu>
         <div className='ms-auto hidden items-center gap-2 md:flex'>{actions}</div>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant='ghost' size='icon' className='ms-auto md:hidden' aria-label='Open menu'><Menu /></Button>
-          </SheetTrigger>
-          <SheetContent side='end' className='d-mob'>
-            <SheetTitle className='m-0 type-h3'>Menu</SheetTitle>
-            <nav aria-label='Main' className='flex flex-col gap-1'>
-              {nav.flatMap((entry) => entry.links ?? [{ label: entry.label, href: entry.href ?? '#' }]).map((link) => (
-                <a key={link.href} href={link.href} className='rounded-md px-2 py-3 text-base font-medium text-foreground no-underline hover:bg-accent'>{link.label}</a>
-              ))}
-            </nav>
-            <div className='mt-auto flex flex-col gap-2'>{actions}</div>
-          </SheetContent>
-        </Sheet>
+        <MobileMenu
+          className='ms-auto md:hidden'
+          links={nav.flatMap((entry) => entry.links ?? [{ label: entry.label, href: entry.href ?? '#' }])}
+          actions={actions}
+        />
       </div>
     </header>
   )

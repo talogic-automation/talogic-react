@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@talogic-automation/react'
+import { MenuIcon } from '@talogic-automation/react'
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from '@talogic-automation/react'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@talogic-automation/react'
 import { Pagination } from '@talogic-automation/react'
@@ -99,4 +100,22 @@ export const DesktopMenubar: Story = {
       ))}
     </Menubar>
   ),
+}
+
+/** The menu toggle: press it to twirl the hamburger into an X and back. */
+export const MenuToggle: Story = {
+  render: function MenuToggleStory () {
+    const [open, setOpen] = useState<boolean | undefined>(undefined)
+
+    return (
+      <button
+        type='button'
+        aria-label={open ? 'Close menu' : 'Open menu'}
+        onClick={() => setOpen(!open)}
+        className='grid size-16 cursor-pointer place-items-center rounded-xl border bg-card text-foreground'
+      >
+        <MenuIcon open={open} className='size-8' />
+      </button>
+    )
+  },
 }

@@ -9,8 +9,6 @@
   },
   "include": [
     "src",
-    ".storybook",
-    "jest.setup.ts",
     "vite.config.ts"
   ]
 }

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Copy } from 'lucide-react'
-import { Button } from '../button'
-import { Field, Input } from '../field'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from './alert-dialog.component'
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './dialog.component'
-import { Drawer, DrawerContent, DrawerDescription, DrawerTitle, DrawerTrigger } from './drawer.component'
-import { Popover, PopoverContent, PopoverTrigger } from './popover.component'
-import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from './sheet.component'
-import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip.component'
+import { Button } from '@talogic-automation/react'
+import { Field, Input } from '@talogic-automation/react'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogTitle, AlertDialogTrigger } from '@talogic-automation/react'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@talogic-automation/react'
+import { Drawer, DrawerContent, DrawerDescription, DrawerTitle, DrawerTrigger } from '@talogic-automation/react'
+import { Popover, PopoverContent, PopoverTrigger } from '@talogic-automation/react'
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@talogic-automation/react'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@talogic-automation/react'
 
 const meta = {
   title: 'Primitives/Overlay',

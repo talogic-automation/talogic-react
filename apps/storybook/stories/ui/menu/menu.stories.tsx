@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Copy, Play, Trash2 } from 'lucide-react'
 import { useState } from 'react'
-import { Button } from '../button'
-import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandShortcut } from './command.component'
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger } from './context-menu.component'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from './dropdown-menu.component'
+import { Button } from '@talogic-automation/react'
+import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandShortcut } from '@talogic-automation/react'
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger } from '@talogic-automation/react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from '@talogic-automation/react'
 
 const meta = {
   title: 'Primitives/Menu',

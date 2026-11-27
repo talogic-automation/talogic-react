@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { FAMILY_PALETTE } from './palette.style'
-import { FREE_HUES, PRODUCT_HUES } from './product-hue.policy'
-import { DENSITIES, HUES, PALETTE_STEPS, PRODUCTS } from './theme.contract'
-import { ThemeRoot } from './theme-root.component'
+import { FAMILY_PALETTE } from '@talogic-automation/react'
+import { FREE_HUES, PRODUCT_HUES } from '@talogic-automation/react'
+import { DENSITIES, HUES, PALETTE_STEPS, PRODUCTS } from '@talogic-automation/react'
+import { ThemeRoot } from '@talogic-automation/react'
 
 const meta = {
   title:      'Foundations/Tokens',

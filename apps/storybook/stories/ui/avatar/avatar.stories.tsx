@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Avatar, AvatarFallback } from './avatar.component'
+import { Avatar, AvatarFallback } from '@talogic-automation/react'
 
 const meta = {
   title:     'Primitives/Avatar',

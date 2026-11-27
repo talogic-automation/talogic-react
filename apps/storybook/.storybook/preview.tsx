@@ -1,6 +1,6 @@
 import './preview.css'
 import type { Decorator, Preview } from '@storybook/react-vite'
-import { DENSITIES, type Density, HUES, PRODUCTS, themeAttributes, type ThemeSettings } from '../src/tokens'
+import { DENSITIES, type Density, HUES, PRODUCTS, themeAttributes, type ThemeSettings } from '@talogic-automation/react'
 
 /** The toolbar value that leaves a switch to the story: no hue override, or the density the story asks for. */
 const AUTO = 'auto'

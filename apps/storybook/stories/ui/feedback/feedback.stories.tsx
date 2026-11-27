@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { toast } from 'sonner'
-import { Button } from '../button'
-import { Alert } from './alert.component'
-import { EmptyState } from './empty-state.component'
-import { Progress } from './progress.component'
-import { Skeleton } from './skeleton.component'
-import { Spinner } from './spinner.component'
-import { Toaster } from './toaster.component'
+import { Button } from '@talogic-automation/react'
+import { Alert } from '@talogic-automation/react'
+import { EmptyState } from '@talogic-automation/react'
+import { Progress } from '@talogic-automation/react'
+import { Skeleton } from '@talogic-automation/react'
+import { Spinner } from '@talogic-automation/react'
+import { Toaster } from '@talogic-automation/react'
 
 const meta = {
   title: 'Primitives/Feedback',

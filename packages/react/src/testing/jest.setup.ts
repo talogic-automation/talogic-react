@@ -8,9 +8,9 @@ class InertResizeObserver {
 }
 
 globalThis.ResizeObserver ??= InertResizeObserver
-Element.prototype.scrollIntoView ??= () => {}
-Element.prototype.hasPointerCapture ??= () => false
-Element.prototype.releasePointerCapture ??= () => {}
+for (const name of ['scrollIntoView', 'hasPointerCapture', 'releasePointerCapture'] as const) {
+  Object.defineProperty(Element.prototype, name, { value: () => false, configurable: true, writable: true })
+}
 globalThis.matchMedia ??= (query: string) => ({
   matches:             false,
   media:               query,

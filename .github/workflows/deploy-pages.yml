@@ -1,0 +1,55 @@
+name: deploy storybook to GitHub Pages
+
+# Written by `smith pipeline deploy-pages --project storybook`. Yours from here: smith upgrade does not rewrite it.
+# Needs Settings → Pages → Source set to "GitHub Actions". A project site is
+# served under /<repository>/: build the app with that base path if it needs one.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Cache the smith the launcher downloads
+        uses: actions/cache@v4
+        with:
+          path: ~/.smith/versions
+          key: smith-versions-${{ runner.os }}-${{ runner.arch }}-3.0.0
+      - name: Install smith
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          npm install --global --registry https://registry.npmjs.org/ monosmith@^3 && SMITH_VERSION=3.0.0 smith --version
+          smith --version
+      - name: Setup
+        run: smith ci setup
+      - uses: actions/configure-pages@v5
+      - name: Build storybook
+        run: smith run build -p storybook
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/apps/storybook
+      - uses: actions/deploy-pages@v4
+        id: deployment

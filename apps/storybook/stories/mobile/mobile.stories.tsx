@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Clock, House, ListTodo, Settings2 } from 'lucide-react'
 import { type ReactNode, useState } from 'react'
-import { ProductLogo } from '../product'
-import { ThemeRoot } from '../tokens'
-import { Avatar, AvatarFallback, Badge, Button, Checkbox, Label } from '../ui'
-import { BottomNav, type BottomNavItem } from './bottom-nav.component'
-import { CaptureFrame } from './capture-frame.component'
-import { RecordButton, type RecordingState } from './record-button.component'
+import { ProductLogo } from '@talogic-automation/react'
+import { ThemeRoot } from '@talogic-automation/react'
+import { Avatar, AvatarFallback, Badge, Button, Checkbox, Label } from '@talogic-automation/react'
+import { BottomNav, type BottomNavItem } from '@talogic-automation/react'
+import { CaptureFrame } from '@talogic-automation/react'
+import { RecordButton, type RecordingState } from '@talogic-automation/react'
 
 const meta = {
   title:      'Mobile/Patterns',

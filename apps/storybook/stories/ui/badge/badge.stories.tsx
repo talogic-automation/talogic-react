@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Badge } from './badge.component'
+import { Badge } from '@talogic-automation/react'
 
 const meta = {
   title:     'Primitives/Badge',

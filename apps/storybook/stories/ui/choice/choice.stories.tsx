@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Label } from '../field'
-import { Checkbox } from './checkbox.component'
-import { RadioGroup, RadioGroupItem } from './radio-group.component'
-import { Slider } from './slider.component'
-import { Switch } from './switch.component'
-import { ToggleGroup, ToggleGroupItem } from './toggle-group.component'
+import { Label } from '@talogic-automation/react'
+import { Checkbox } from '@talogic-automation/react'
+import { RadioGroup, RadioGroupItem } from '@talogic-automation/react'
+import { Slider } from '@talogic-automation/react'
+import { Switch } from '@talogic-automation/react'
+import { ToggleGroup, ToggleGroupItem } from '@talogic-automation/react'
 
 const meta = {
   title: 'Primitives/Choice',

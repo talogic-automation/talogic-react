@@ -3,7 +3,7 @@ module.exports = {
   preset:             '@monosmith/jest-preset',
   testEnvironment:    'jsdom',
   roots:              ['<rootDir>/src'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/testing/jest.setup.ts'],
   transform:          {
     '^(?!.*[.](js|jsx|ts|tsx|cjs|mjs|css|json)$)': '@monosmith/jest-preset/asset-transform',
     '^.+[.][cm]?[tj]sx?$':                         ['babel-jest', { presets: [['@babel/preset-env', { targets: { node: 'current' }, loose: true }], '@babel/preset-typescript', ['@babel/preset-react', { runtime: 'automatic' }]] }],

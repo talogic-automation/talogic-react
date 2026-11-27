@@ -27,12 +27,12 @@ import {
   SelectValue,
   Slider,
   Switch,
-} from '../ui'
-import { FlowNode } from './flow-node.component'
-import { Inspector } from './inspector.component'
-import { StatusBar } from './status-bar.component'
-import { type TimelineLane, TimelineLanes } from './timeline-lanes.component'
-import { TitleBar } from './title-bar.component'
+} from '@talogic-automation/react'
+import { FlowNode } from '@talogic-automation/react'
+import { Inspector } from '@talogic-automation/react'
+import { StatusBar } from '@talogic-automation/react'
+import { type TimelineLane, TimelineLanes } from '@talogic-automation/react'
+import { TitleBar } from '@talogic-automation/react'
 
 const meta = {
   title:      'Desktop/Patterns',

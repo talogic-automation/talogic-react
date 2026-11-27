@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Bell, Calendar, CircleHelp, CreditCard, Download, FileText, LayoutGrid, Link2, List, Play, Shield, Users } from 'lucide-react'
 import { useState } from 'react'
-import { type RunStatus, StatusBadge } from '../status'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, DropdownMenuItem, Field, Input, Pagination, Progress, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Tabs, TabsList, TabsTrigger, Label, ToggleGroup, ToggleGroupItem } from '../ui'
-import { AppShell, type AppNavItem } from './app-shell.component'
-import { FilterBar, FilterChip } from './filter-bar.component'
-import { FormSection } from './form-section.component'
-import { PageHeader } from './page-header.component'
-import { type RecordsColumn, RecordsTable } from './records-table.component'
-import { StatCard } from './stat-card.component'
+import { type RunStatus, StatusBadge } from '@talogic-automation/react'
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, Button, DropdownMenuItem, Field, Input, Pagination, Progress, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Tabs, TabsList, TabsTrigger, Label, ToggleGroup, ToggleGroupItem } from '@talogic-automation/react'
+import { AppShell, type AppNavItem } from '@talogic-automation/react'
+import { FilterBar, FilterChip } from '@talogic-automation/react'
+import { FormSection } from '@talogic-automation/react'
+import { PageHeader } from '@talogic-automation/react'
+import { type RecordsColumn, RecordsTable } from '@talogic-automation/react'
+import { StatCard } from '@talogic-automation/react'
 
 const meta = {
   title:      'App/Patterns',

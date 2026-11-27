@@ -70,14 +70,14 @@ React 19 and React DOM 19 as peers.
 
 ```jsonc
 // package.json of the product
-"@talogic/react": "file:../talogic-react"
+"@talogic/react": "file:../talogic-react/packages/react"
 ```
 
 ```sh
-cd ../talogic-react && npm install && npm run build
+cd ../talogic-react && npm install && smith build -p react
 ```
 
-Run `npm run build` in talogic-react again after each change you want the product to see.
+Run `smith build -p react` in talogic-react again after each change you want the product to see.
 
 ## 3. Add the styles
 
@@ -175,8 +175,9 @@ export function RecipeHeader () {
 }
 ```
 
-Browse every component, its props and full example screens in the Storybook (`npm run storybook` in
-talogic-react, or the GitHub Pages site). Each story has the code that renders it.
+Browse every component, its props and full example screens in the Storybook at
+<https://talogic-automation.github.io/talogic-react/>, or run it locally with `smith dev -p storybook` in
+talogic-react. Each story has the code that renders it.
 
 ## 6. Replace Chakra UI
 
@@ -281,7 +282,7 @@ Example:
 3. Replace the JetBrains Mono font with Fira Code: remove `@fontsource-variable/jetbrains-mono`, because
    `@talogic/react/fonts.css` loads Inter, DM Sans and Fira Code.
 4. In Storybook, replace the `withPargicTheme` decorator with one that sets `data-product`, `dark` and the density
-   class on `document.documentElement`. The decorator in talogic-react's `.storybook/preview.tsx` is a template.
+   class on `document.documentElement`. The decorator in talogic-react's `apps/storybook/.storybook/preview.tsx` is a template.
 
 ### Step 4: remove Chakra
 
@@ -302,6 +303,6 @@ When a search for `@chakra-ui` in `src` finds nothing:
 ## 7. Get help from the source
 
 - Components and props: the Storybook, and the TSDoc on every export (your editor shows it on hover).
-- Tokens: `src/tokens/tokens.css` in talogic-react.
-- A component you need and do not find: add it to talogic-react, in the slice it belongs to, with a story and
-  tests, then release a new version.
+- Tokens: `packages/react/src/tokens/tokens.css` in talogic-react.
+- A component you need and do not find: add it to talogic-react, in the slice it belongs to, with tests and a
+  story, and merge it with a `feat:` title. The merge releases a new version.

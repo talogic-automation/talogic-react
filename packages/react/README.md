@@ -5,7 +5,7 @@ drawn with those tokens, and patterns for each surface of the product family. Th
 "Talogic Component System" canvas.
 
 **[Read the usage guide](docs/usage.md)** for the registry token, the install, the setup of a product, and how to
-replace Chakra UI. The Storybook workflow publishes every component to GitHub Pages on each push to `main`.
+replace Chakra UI. The Storybook, with every component, is at https://talogic-automation.github.io/talogic-react/.
 
 ## Install and set up
 
@@ -16,8 +16,16 @@ install it under the alias `@talogic/react`:
 npm install @talogic/react@npm:@talogic-automation/react
 ```
 
-Until the first release, link a sibling checkout with `"@talogic/react": "file:../talogic-react"`. To release, set
-the version in `package.json` and push a matching tag (`v0.1.0`): the Release workflow publishes it.
+Until the first release, link a sibling checkout with `"@talogic/react": "file:../talogic-react/packages/react"`.
+
+## Releases
+
+Nobody sets a version or a tag by hand. On every merge to `main`, the CI pipeline that MonoSmith generates
+(`.github/workflows/ci.yml`) runs `smith ci release`: it reads the conventional commits since the last release
+(`feat:` gives a minor version, `fix:` a patch, a breaking change a major), sets the version, builds, publishes to
+GitHub Packages, pushes the tag and writes the GitHub Release. A pull request shows the release it will make in a
+comment. Squash-merge with a `feat:` or `fix:` title when the change must release; a `chore:` or `docs:` title
+releases nothing. The same merge also deploys the Storybook to GitHub Pages (`.github/workflows/deploy-pages.yml`).
 
 With Tailwind CSS v4 in the consuming app:
 
@@ -75,17 +83,20 @@ and `text-orange-700` are family steps. Fonts: DM Sans for headlines (`font-disp
 
 ## Work on the package
 
+The repository is a MonoSmith workspace with two projects: the package in `packages/react` and the Storybook app
+in `apps/storybook`, whose stories import the package's public API.
+
 ```sh
 npm install
-npm run storybook        # http://localhost:6006, with Product, Hue, Theme and Density in the toolbar
-npm test                 # Jest and Testing Library, in jsdom
-npm run lint             # @monosmith/eslint-config, which also formats (eslint --fix)
-npm run typecheck
-npm run build            # dist/index.js, the type declarations and dist/talogic-react.css
-npm run build-storybook  # storybook-static
+smith dev -p storybook   # http://localhost:6006, with Product, Hue, Theme and Density in the toolbar
+smith verify             # what CI runs: deps check, lint, typecheck, tests and build of both projects
+smith test -p react      # Jest and Testing Library, in jsdom
+npm run format -w packages/react   # @monosmith/eslint-config, which also formats (eslint --fix)
+smith release --dry-run  # the release the next merge to main makes
 ```
 
-The source follows vertical feature slices: each folder under `src` is a slice with flat, role-suffixed files
-(`.component.tsx`, `.recipe.ts`, `.hook.ts`, `.mapper.ts`, `.algorithm.ts`, `.policy.ts`, `.contract.ts`,
-`.content.ts`, `.style.ts`) and an `index.ts` that is its only entry point. Tests and stories sit beside the code.
-`src/index.ts` re-exports the slices.
+The package source follows vertical feature slices: each folder under `packages/react/src` is a slice with flat,
+role-suffixed files (`.component.tsx`, `.recipe.ts`, `.hook.ts`, `.mapper.ts`, `.algorithm.ts`, `.policy.ts`,
+`.contract.ts`, `.content.ts`, `.style.ts`) and an `index.ts` that is its only entry point. Tests sit beside the
+code. Stories live in `apps/storybook/stories`, in folders that mirror the slices, because MonoSmith's dependency
+check treats every file under the package's `src` as published code. `src/index.ts` re-exports the slices.

@@ -1,8 +1,9 @@
 {
-  "name": "adopt-workspace",
+  "name": "talogic-react-workspace",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "devDependencies": {
     "@monosmith/eslint-config": "^1.8.0",
@@ -14,5 +15,9 @@
     "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.5.2",
     "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "@parcel/watcher@2.6.0": true
   }
 }

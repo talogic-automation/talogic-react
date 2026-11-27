@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion.component'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './card.component'
-import { Kbd } from './kbd.component'
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './resizable.component'
-import { ScrollArea } from './scroll-area.component'
-import { Separator } from './separator.component'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './table.component'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@talogic-automation/react'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@talogic-automation/react'
+import { Kbd } from '@talogic-automation/react'
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@talogic-automation/react'
+import { ScrollArea } from '@talogic-automation/react'
+import { Separator } from '@talogic-automation/react'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@talogic-automation/react'
 
 const meta = {
   title: 'Primitives/Layout',

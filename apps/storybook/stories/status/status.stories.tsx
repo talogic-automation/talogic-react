@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { RUN_STATUSES } from './run-status.contract'
-import { StatusBadge } from './status-badge.component'
+import { RUN_STATUSES } from '@talogic-automation/react'
+import { StatusBadge } from '@talogic-automation/react'
 
 const meta = {
   title:     'Shared/Status',

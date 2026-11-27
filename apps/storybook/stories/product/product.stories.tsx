@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
-import { PRODUCTS, type Product } from '../tokens'
-import { PRODUCT_CATALOGUE } from './product-catalogue.content'
-import { ProductLogo } from './product-logo.component'
-import { ProductSwitcher } from './product-switcher.component'
+import { PRODUCTS, type Product } from '@talogic-automation/react'
+import { PRODUCT_CATALOGUE } from '@talogic-automation/react'
+import { ProductLogo } from '@talogic-automation/react'
+import { ProductSwitcher } from '@talogic-automation/react'
 
 const meta = {
   title: 'Shared/Product',

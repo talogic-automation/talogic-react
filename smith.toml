@@ -4,7 +4,7 @@
 schema = 1
 
 [workspace]
-name = "adopt"
+name = "talogic-react"
 # The defaults vintage this workspace was made with; a newer smith keeps it
 # until smith upgrade --defaults adopts a newer one.
 defaults = "2026.11"
@@ -12,7 +12,7 @@ defaults = "2026.11"
 # Acme.Core). Default: the workspace name. The scope and module_prefix derive from it.
 # namespace = "adopt"
 # npm scope for Node packages. Default: @ and the namespace.
-scope = "@adopt"
+scope = "@talogic-automation"
 # Go module path prefix for Go projects
 module_prefix = "github.com/talogic-automation/talogic-react"
 
@@ -50,9 +50,16 @@ node = "node-jest"     # ESLint with @monosmith/eslint-config, and Jest
 # config loads the same rules. See https://github.com/monosmith-app/monosmith/blob/main/docs/reference/conventions.md.
 [conventions.vertical-slices]
 
-# [release]
-# branch = "main"     # releases run only from this branch
-# remote = "origin"   # release tags are pushed here
+# The package is published to the GitHub Packages npm registry of the organisation, with the workflow's GITHUB_TOKEN.
+[registries.github]
+npm = "https://npm.pkg.github.com"
+auth = "github-packages"
+
+# Every merge to main releases from the conventional commits: smith sets the version, tags, publishes and writes
+# the GitHub Release.
+[release]
+registry = "github"
+github_releases = true
 
 # [cache]
 # dir = ".smith/cache"

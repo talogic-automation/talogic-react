@@ -12,6 +12,7 @@ permissions:
   contents: write
   pull-requests: write
   deployments: write
+  packages: write
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -63,8 +64,19 @@ jobs:
         run: smith release --dry-run --comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pack
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        run: smith ci pack
+      - name: Keep the packed apps (dist/drop as artifact drop)
+        uses: actions/upload-artifact@v7
+        if: github.event_name == 'push' && github.ref_name == 'main'
+        with:
+          name: drop
+          path: dist/drop
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Release
         if: github.event_name == 'push' && github.ref_name == 'main'
         run: smith ci release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

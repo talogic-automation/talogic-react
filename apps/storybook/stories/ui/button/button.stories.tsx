@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Play, Plus } from 'lucide-react'
-import { Button } from './button.component'
+import { Button } from '@talogic-automation/react'
 
 const meta = {
   title:     'Primitives/Button',

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Search } from 'lucide-react'
-import { Field } from './field.component'
-import { Input } from './input.component'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select.component'
-import { Textarea } from './textarea.component'
+import { Field } from '@talogic-automation/react'
+import { Input } from '@talogic-automation/react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@talogic-automation/react'
+import { Textarea } from '@talogic-automation/react'
 
 const meta = {
   title:     'Primitives/Field',

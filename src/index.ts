@@ -1,5 +1,5 @@
 /**
- * @talogic/react: the Talogic design system.
+ * @talogic-automation/react (installed as @talogic/react): the Talogic design system.
  *
  * Tokens and theme switches, shadcn/ui primitives, and patterns for each surface: the website, the web portals,
  * the desktop apps and the mobile apps. Import the styles once: `@talogic/react/tokens.css` after Tailwind, or

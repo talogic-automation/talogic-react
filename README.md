@@ -1,13 +1,23 @@
-# @talogic/react
+# @talogic-automation/react
 
 The Talogic design system in React: design tokens for Tailwind CSS v4 and shadcn/ui, the shadcn/ui primitives
 drawn with those tokens, and patterns for each surface of the product family. The source design is the approved
 "Talogic Component System" canvas.
 
+**[Read the usage guide](docs/usage.md)** for the registry token, the install, the setup of a product, and how to
+replace Chakra UI. The Storybook workflow publishes every component to GitHub Pages on each push to `main`.
+
 ## Install and set up
 
-The package is published to the GitHub Packages npm registry of the `talogic-automation` organisation. Until the
-first release, link a sibling checkout with `"@talogic/react": "file:../talogic-react"`.
+The package is published to the GitHub Packages npm registry of the `talogic-automation` organisation, and products
+install it under the alias `@talogic/react`:
+
+```sh
+npm install @talogic/react@npm:@talogic-automation/react
+```
+
+Until the first release, link a sibling checkout with `"@talogic/react": "file:../talogic-react"`. To release, set
+the version in `package.json` and push a matching tag (`v0.1.0`): the Release workflow publishes it.
 
 With Tailwind CSS v4 in the consuming app:
 

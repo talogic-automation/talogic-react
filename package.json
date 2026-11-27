@@ -1,5 +1,5 @@
 {
-  "name": "@talogic/react",
+  "name": "@talogic-automation/react",
   "version": "0.1.0",
   "description": "Talogic design system: tokens, shadcn/ui primitives and surface patterns for web, app, desktop and mobile.",
   "license": "MIT",

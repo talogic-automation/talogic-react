@@ -7,3 +7,6 @@ test-output/
 *.tsbuildinfo
 *.log
 .DS_Store
+
+# smith
+.smith/

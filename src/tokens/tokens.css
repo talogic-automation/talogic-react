@@ -1,0 +1,599 @@
+/*
+ * Talogic design tokens for Tailwind CSS v4 and shadcn/ui.
+ *
+ * Consumers that run Tailwind import this file after Tailwind itself:
+ *   @import "tailwindcss";
+ *   @import "@talogic/react/tokens.css";
+ *   @source "../node_modules/@talogic/react/dist";
+ * The fonts are a separate import, @talogic/react/fonts.css, resolved by the consumer's bundler.
+ *
+ * Switches, all on any element (usually <html>):
+ *   .dark                         dark theme
+ *   data-product="pargic"         the product's accent (talogic, pargic, daygic, ingic, loregic, loomgic)
+ *   data-hue="pink"               any family hue; wins over data-product on the same element
+ *   .d-web .d-app .d-desk .d-mob  control density for the surface
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Family palette: 12 hues x 11 steps with the same OKLCH lightness per step. Replaces the default Tailwind colours. */
+@theme static {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-ink: #14121a;
+  /* red · H 25 */
+  --color-red-50: #fef4f3;
+  --color-red-100: #fee9e7;
+  --color-red-200: #fed2cd;
+  --color-red-300: #ffb0a9;
+  --color-red-400: #fb817a;
+  --color-red-500: #e15955;
+  --color-red-600: #c43f3e;
+  --color-red-700: #a12f2f;
+  --color-red-800: #7c2524;
+  --color-red-900: #581b1a;
+  --color-red-950: #371210;
+  /* orange · H 50 */
+  --color-orange-50: #fff4ef;
+  --color-orange-100: #feeadf;
+  --color-orange-200: #ffd4bc;
+  --color-orange-300: #ffb48a;
+  --color-orange-400: #f58b4b;
+  --color-orange-500: #d96604;
+  --color-orange-600: #b65400;
+  --color-orange-700: #934302;
+  --color-orange-800: #723302;
+  --color-orange-900: #532301;
+  --color-orange-950: #351502;
+  /* amber · H 78 */
+  --color-amber-50: #fcf6ec;
+  --color-amber-100: #fcecd5;
+  --color-amber-200: #f8d9aa;
+  --color-amber-300: #efbe72;
+  --color-amber-400: #de9d16;
+  --color-amber-500: #b78006;
+  --color-amber-600: #996a03;
+  --color-amber-700: #7c5500;
+  --color-amber-800: #604102;
+  --color-amber-900: #452e01;
+  --color-amber-950: #2c1c00;
+  /* lime · H 125 */
+  --color-lime-50: #f4f9ee;
+  --color-lime-100: #e9f3da;
+  --color-lime-200: #d3e7b4;
+  --color-lime-300: #b7d484;
+  --color-lime-400: #95bb46;
+  --color-lime-500: #769c03;
+  --color-lime-600: #628202;
+  --color-lime-700: #4e6801;
+  --color-lime-800: #3b5001;
+  --color-lime-900: #2a3900;
+  --color-lime-950: #192400;
+  /* green · H 155 */
+  --color-green-50: #effaf2;
+  --color-green-100: #ddf6e4;
+  --color-green-200: #baecca;
+  --color-green-300: #8bdda8;
+  --color-green-400: #4bc680;
+  --color-green-500: #01a760;
+  --color-green-600: #028b4f;
+  --color-green-700: #02703f;
+  --color-green-800: #02572f;
+  --color-green-900: #013e20;
+  --color-green-950: #012712;
+  /* teal · H 180 */
+  --color-teal-50: #edfaf7;
+  --color-teal-100: #d6f7ef;
+  --color-teal-200: #abeee0;
+  --color-teal-300: #6bdfca;
+  --color-teal-400: #02c6ae;
+  --color-teal-500: #01a38f;
+  --color-teal-600: #098777;
+  --color-teal-700: #046d5f;
+  --color-teal-800: #025449;
+  --color-teal-900: #003c34;
+  --color-teal-950: #022620;
+  /* cyan · H 210 */
+  --color-cyan-50: #ecfafc;
+  --color-cyan-100: #d5f5fc;
+  --color-cyan-200: #a7ebf8;
+  --color-cyan-300: #63dbef;
+  --color-cyan-400: #00c0d7;
+  --color-cyan-500: #059eb1;
+  --color-cyan-600: #058393;
+  --color-cyan-700: #046a77;
+  --color-cyan-800: #03515c;
+  --color-cyan-900: #023a42;
+  --color-cyan-950: #02242a;
+  /* sky · H 237 */
+  --color-sky-50: #eff8ff;
+  --color-sky-100: #def2ff;
+  --color-sky-200: #bde4fe;
+  --color-sky-300: #89d1fe;
+  --color-sky-400: #2cb7fd;
+  --color-sky-500: #0997d5;
+  --color-sky-600: #017db2;
+  --color-sky-700: #026590;
+  --color-sky-800: #034d70;
+  --color-sky-900: #003752;
+  --color-sky-950: #002235;
+  /* blue · H 265 */
+  --color-blue-50: #f3f7ff;
+  --color-blue-100: #e7efff;
+  --color-blue-200: #cfdeff;
+  --color-blue-300: #adc7ff;
+  --color-blue-400: #82a8fe;
+  --color-blue-500: #5886f2;
+  --color-blue-600: #426dd7;
+  --color-blue-700: #3357b1;
+  --color-blue-800: #274387;
+  --color-blue-900: #1c3060;
+  --color-blue-950: #111e3b;
+  /* violet · H 293 */
+  --color-violet-50: #f7f6fe;
+  --color-violet-100: #efecfe;
+  --color-violet-200: #dfd8fe;
+  --color-violet-300: #c9bdfe;
+  --color-violet-400: #af98fe;
+  --color-violet-500: #9274e8;
+  --color-violet-600: #7b5bcd;
+  --color-violet-700: #6347a9;
+  --color-violet-800: #4c3781;
+  --color-violet-900: #36285c;
+  --color-violet-950: #211939;
+  /* purple · H 318 */
+  --color-purple-50: #fbf4fe;
+  --color-purple-100: #f9e8fe;
+  --color-purple-200: #f2d0fd;
+  --color-purple-300: #e5b1f6;
+  --color-purple-400: #d28ae8;
+  --color-purple-500: #b666ce;
+  --color-purple-600: #9c4db4;
+  --color-purple-700: #7f3c93;
+  --color-purple-800: #622e71;
+  --color-purple-900: #452150;
+  --color-purple-950: #2b1531;
+  /* pink · H 350 */
+  --color-pink-50: #fef3f8;
+  --color-pink-100: #ffe7f1;
+  --color-pink-200: #fecee4;
+  --color-pink-300: #feaad1;
+  --color-pink-400: #f080b8;
+  --color-pink-500: #d4599b;
+  --color-pink-600: #b94082;
+  --color-pink-700: #973069;
+  --color-pink-800: #742651;
+  --color-pink-900: #531b39;
+  --color-pink-950: #331123;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Sans Variable", "DM Sans", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Fira Code Variable", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-canvas: var(--canvas);
+  --color-brand: var(--brand);
+  --color-brand-text: var(--brand-text);
+  --color-brand-soft: var(--brand-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: var(--radius);
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+
+  --shadow-xs: var(--elevation-xs);
+  --shadow-sm: var(--elevation-sm);
+  --shadow-md: var(--elevation-md);
+  --shadow-lg: var(--elevation-lg);
+}
+
+/* Light theme. Neutrals lean slightly toward the Talogic violet. */
+:root {
+  --background: #ffffff;
+  --foreground: #14121a;
+  --card: #ffffff;
+  --card-foreground: #14121a;
+  --popover: #ffffff;
+  --popover-foreground: #14121a;
+  --secondary: #f1f0f5;
+  --secondary-foreground: #14121a;
+  --muted: #f4f3f7;
+  --muted-foreground: #5f5b6b;
+  --accent: #efedf4;
+  --accent-foreground: #14121a;
+  --border: #e4e2ea;
+  --input: #d6d3de;
+  --canvas: #f6f5f9;
+  --sidebar: #f8f7fa;
+  --sidebar-foreground: #14121a;
+  --sidebar-accent: #efedf4;
+  --sidebar-accent-foreground: #14121a;
+  --sidebar-border: #e8e6ee;
+
+  --destructive: var(--color-red-600);
+  --destructive-foreground: #ffffff;
+  --destructive-soft: var(--color-red-100);
+  --success: var(--color-green-700);
+  --success-soft: var(--color-green-100);
+  --warning: var(--color-amber-700);
+  --warning-soft: var(--color-amber-100);
+  --info: var(--color-blue-700);
+  --info-soft: var(--color-blue-100);
+
+  /* Multi-series data: the 500 steps in wheel order, so no series outweighs another. */
+  --chart-1: var(--color-violet-500);
+  --chart-2: var(--color-orange-500);
+  --chart-3: var(--color-green-500);
+  --chart-4: var(--color-sky-500);
+  --chart-5: var(--color-pink-500);
+
+  --radius: 10px;
+
+  --elevation-xs: 0 1px 2px rgb(20 18 26 / 0.06);
+  --elevation-sm: 0 1px 2px rgb(20 18 26 / 0.06), 0 2px 6px rgb(20 18 26 / 0.06);
+  --elevation-md: 0 2px 4px rgb(20 18 26 / 0.05), 0 8px 20px rgb(20 18 26 / 0.08);
+  --elevation-lg: 0 4px 8px rgb(20 18 26 / 0.06), 0 20px 44px rgb(20 18 26 / 0.14);
+
+  --control-h: 36px;
+  --control-px: 14px;
+  --control-fs: 14px;
+
+  /* The accent hue: Talogic violet unless data-product or data-hue says otherwise. */
+  --hue-100: var(--color-violet-100);
+  --hue-300: var(--color-violet-300);
+  --hue-400: var(--color-violet-400);
+  --hue-500: var(--color-violet-500);
+  --hue-700: var(--color-violet-700);
+  --hue-950: var(--color-violet-950);
+}
+
+/* Dark theme. Surfaces step lighter (background, card, popover) and shadows turn black. */
+.dark {
+  color-scheme: dark;
+
+  --background: #0e0d12;
+  --foreground: #f3f2f7;
+  --card: #16151c;
+  --card-foreground: #f3f2f7;
+  --popover: #1b1a22;
+  --popover-foreground: #f3f2f7;
+  --secondary: #22212a;
+  --secondary-foreground: #f3f2f7;
+  --muted: #1e1d25;
+  --muted-foreground: #a19dad;
+  --accent: #26252e;
+  --accent-foreground: #f3f2f7;
+  --border: #2a2832;
+  --input: #3a3744;
+  --canvas: #0a090d;
+  --sidebar: #121117;
+  --sidebar-foreground: #f3f2f7;
+  --sidebar-accent: #26252e;
+  --sidebar-accent-foreground: #f3f2f7;
+  --sidebar-border: #24222b;
+
+  --destructive: var(--color-red-400);
+  --destructive-foreground: #14121a;
+  --destructive-soft: var(--color-red-950);
+  --success: var(--color-green-300);
+  --success-soft: var(--color-green-950);
+  --warning: var(--color-amber-300);
+  --warning-soft: var(--color-amber-950);
+  --info: var(--color-blue-300);
+  --info-soft: var(--color-blue-950);
+
+  --chart-1: var(--color-violet-400);
+  --chart-2: var(--color-orange-400);
+  --chart-3: var(--color-green-400);
+  --chart-4: var(--color-sky-400);
+  --chart-5: var(--color-pink-400);
+
+  --elevation-xs: 0 1px 2px rgb(0 0 0 / 0.4);
+  --elevation-sm: 0 1px 2px rgb(0 0 0 / 0.4), 0 2px 6px rgb(0 0 0 / 0.3);
+  --elevation-md: 0 2px 4px rgb(0 0 0 / 0.4), 0 8px 20px rgb(0 0 0 / 0.4);
+  --elevation-lg: 0 4px 8px rgb(0 0 0 / 0.4), 0 20px 44px rgb(0 0 0 / 0.55);
+}
+
+/*
+ * Product accents. Each product takes one family hue. The data-hue rules come after
+ * the data-product rules, so an explicit hue wins on the same element.
+ */
+[data-product="talogic"] {
+  --hue-100: var(--color-violet-100);
+  --hue-300: var(--color-violet-300);
+  --hue-400: var(--color-violet-400);
+  --hue-500: var(--color-violet-500);
+  --hue-700: var(--color-violet-700);
+  --hue-950: var(--color-violet-950);
+}
+[data-product="pargic"] {
+  --hue-100: var(--color-orange-100);
+  --hue-300: var(--color-orange-300);
+  --hue-400: var(--color-orange-400);
+  --hue-500: var(--color-orange-500);
+  --hue-700: var(--color-orange-700);
+  --hue-950: var(--color-orange-950);
+}
+[data-product="daygic"] {
+  --hue-100: var(--color-amber-100);
+  --hue-300: var(--color-amber-300);
+  --hue-400: var(--color-amber-400);
+  --hue-500: var(--color-amber-500);
+  --hue-700: var(--color-amber-700);
+  --hue-950: var(--color-amber-950);
+}
+[data-product="ingic"] {
+  --hue-100: var(--color-blue-100);
+  --hue-300: var(--color-blue-300);
+  --hue-400: var(--color-blue-400);
+  --hue-500: var(--color-blue-500);
+  --hue-700: var(--color-blue-700);
+  --hue-950: var(--color-blue-950);
+}
+[data-product="loregic"] {
+  --hue-100: var(--color-green-100);
+  --hue-300: var(--color-green-300);
+  --hue-400: var(--color-green-400);
+  --hue-500: var(--color-green-500);
+  --hue-700: var(--color-green-700);
+  --hue-950: var(--color-green-950);
+}
+[data-product="loomgic"] {
+  --hue-100: var(--color-blue-100);
+  --hue-300: var(--color-blue-300);
+  --hue-400: var(--color-blue-400);
+  --hue-500: var(--color-blue-500);
+  --hue-700: var(--color-blue-700);
+  --hue-950: var(--color-blue-950);
+}
+
+[data-hue="red"] {
+  --hue-100: var(--color-red-100);
+  --hue-300: var(--color-red-300);
+  --hue-400: var(--color-red-400);
+  --hue-500: var(--color-red-500);
+  --hue-700: var(--color-red-700);
+  --hue-950: var(--color-red-950);
+}
+[data-hue="orange"] {
+  --hue-100: var(--color-orange-100);
+  --hue-300: var(--color-orange-300);
+  --hue-400: var(--color-orange-400);
+  --hue-500: var(--color-orange-500);
+  --hue-700: var(--color-orange-700);
+  --hue-950: var(--color-orange-950);
+}
+[data-hue="amber"] {
+  --hue-100: var(--color-amber-100);
+  --hue-300: var(--color-amber-300);
+  --hue-400: var(--color-amber-400);
+  --hue-500: var(--color-amber-500);
+  --hue-700: var(--color-amber-700);
+  --hue-950: var(--color-amber-950);
+}
+[data-hue="lime"] {
+  --hue-100: var(--color-lime-100);
+  --hue-300: var(--color-lime-300);
+  --hue-400: var(--color-lime-400);
+  --hue-500: var(--color-lime-500);
+  --hue-700: var(--color-lime-700);
+  --hue-950: var(--color-lime-950);
+}
+[data-hue="green"] {
+  --hue-100: var(--color-green-100);
+  --hue-300: var(--color-green-300);
+  --hue-400: var(--color-green-400);
+  --hue-500: var(--color-green-500);
+  --hue-700: var(--color-green-700);
+  --hue-950: var(--color-green-950);
+}
+[data-hue="teal"] {
+  --hue-100: var(--color-teal-100);
+  --hue-300: var(--color-teal-300);
+  --hue-400: var(--color-teal-400);
+  --hue-500: var(--color-teal-500);
+  --hue-700: var(--color-teal-700);
+  --hue-950: var(--color-teal-950);
+}
+[data-hue="cyan"] {
+  --hue-100: var(--color-cyan-100);
+  --hue-300: var(--color-cyan-300);
+  --hue-400: var(--color-cyan-400);
+  --hue-500: var(--color-cyan-500);
+  --hue-700: var(--color-cyan-700);
+  --hue-950: var(--color-cyan-950);
+}
+[data-hue="sky"] {
+  --hue-100: var(--color-sky-100);
+  --hue-300: var(--color-sky-300);
+  --hue-400: var(--color-sky-400);
+  --hue-500: var(--color-sky-500);
+  --hue-700: var(--color-sky-700);
+  --hue-950: var(--color-sky-950);
+}
+[data-hue="blue"] {
+  --hue-100: var(--color-blue-100);
+  --hue-300: var(--color-blue-300);
+  --hue-400: var(--color-blue-400);
+  --hue-500: var(--color-blue-500);
+  --hue-700: var(--color-blue-700);
+  --hue-950: var(--color-blue-950);
+}
+[data-hue="violet"] {
+  --hue-100: var(--color-violet-100);
+  --hue-300: var(--color-violet-300);
+  --hue-400: var(--color-violet-400);
+  --hue-500: var(--color-violet-500);
+  --hue-700: var(--color-violet-700);
+  --hue-950: var(--color-violet-950);
+}
+[data-hue="purple"] {
+  --hue-100: var(--color-purple-100);
+  --hue-300: var(--color-purple-300);
+  --hue-400: var(--color-purple-400);
+  --hue-500: var(--color-purple-500);
+  --hue-700: var(--color-purple-700);
+  --hue-950: var(--color-purple-950);
+}
+[data-hue="pink"] {
+  --hue-100: var(--color-pink-100);
+  --hue-300: var(--color-pink-300);
+  --hue-400: var(--color-pink-400);
+  --hue-500: var(--color-pink-500);
+  --hue-700: var(--color-pink-700);
+  --hue-950: var(--color-pink-950);
+}
+
+/* The accent roles, declared again wherever the hue may change, so var() resolves against the local hue. */
+:root,
+[data-product],
+[data-hue] {
+  --brand: var(--hue-500);
+  --primary: var(--hue-500);
+  --primary-foreground: #14121a;
+  --brand-text: var(--hue-700);
+  --brand-soft: var(--hue-100);
+  --ring: var(--hue-500);
+  --sidebar-primary: var(--hue-500);
+  --sidebar-primary-foreground: #14121a;
+  --sidebar-ring: var(--hue-500);
+}
+
+/* Dark: fill 400, text 300, soft 950. */
+.dark,
+.dark [data-product],
+.dark [data-hue] {
+  --brand: var(--hue-400);
+  --primary: var(--hue-400);
+  --brand-text: var(--hue-300);
+  --brand-soft: var(--hue-950);
+  --ring: var(--hue-400);
+  --sidebar-primary: var(--hue-400);
+  --sidebar-ring: var(--hue-400);
+}
+
+/* Density per surface: one recipe per component, sized by the surface. */
+.d-web {
+  --control-h: 44px;
+  --control-px: 20px;
+  --control-fs: 15px;
+}
+
+.d-app {
+  --control-h: 36px;
+  --control-px: 14px;
+  --control-fs: 14px;
+}
+
+.d-desk {
+  --control-h: 28px;
+  --control-px: 10px;
+  --control-fs: 13px;
+}
+
+.d-mob {
+  --control-h: 48px;
+  --control-px: 18px;
+  --control-fs: 16px;
+}
+
+/* Type scale. Headlines use DM Sans, content uses Inter, code uses Fira Code. */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+}
+
+@utility type-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+@utility type-h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+@utility type-h4 {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+@utility type-lead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+}

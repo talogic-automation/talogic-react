@@ -1,0 +1,6 @@
+/* Storybook styles: Tailwind, the Talogic tokens and fonts, and every class used in the stories. */
+@import "tailwindcss";
+@import "../src/tokens/tokens.css";
+@import "../src/tokens/fonts.css";
+
+@source "../src";

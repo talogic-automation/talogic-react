@@ -1,0 +1,5 @@
+/* The compiled stylesheet for consumers without Tailwind: Tailwind, the tokens and every class the components use. */
+@import "tailwindcss";
+@import "./tokens.css";
+
+@source "../";

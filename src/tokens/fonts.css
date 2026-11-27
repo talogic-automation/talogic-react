@@ -1,0 +1,4 @@
+/* The three Talogic fonts, self-hosted from Fontsource: DM Sans for headlines, Inter for content, Fira Code for code. */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/fira-code";

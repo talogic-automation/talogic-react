@@ -1,3 +1,5 @@
+export { apcaContrast, LABEL_COLORS, readableLabel } from './apca-contrast.algorithm'
+export type { LabelColor } from './apca-contrast.algorithm'
 export { HUE_FILL } from './hue-fill.style'
 export { FAMILY_PALETTE } from './palette.style'
 export { FREE_HUES, hueForProduct, PRODUCT_HUES } from './product-hue.policy'

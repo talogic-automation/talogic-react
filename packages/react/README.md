@@ -67,6 +67,12 @@ colours and their `-soft` backgrounds). The family palette replaces the default 
 and `text-orange-700` are family steps. Fonts: DM Sans for headlines (`font-display`, `type-display`, `type-h1`,
 `type-h2`), Inter for content (`font-sans`), Fira Code for code (`font-mono`).
 
+Labels on fills are never a fixed colour. The APCA contrast method (the WCAG 3 draft) picks, for every family
+colour, the ink or white label that reads best on it. `npm run tokens:labels -w packages/react` writes the result
+to `tokens.css` as `--color-on-<hue>-<step>` (so `bg-violet-500 text-on-violet-500` works), and a test fails when
+the file and the rule disagree. `--primary-foreground`, `--sidebar-primary-foreground` and
+`--destructive-foreground` point at these tokens. For a colour known only at run time, call `readableLabel(hex)`.
+
 ## What is in the package
 
 | Slice | Contents |

@@ -131,6 +131,9 @@ export const Nodes: Story = {
 /** Timeline lanes with a playhead. */
 export const Timeline: Story = { render: () => <TimelineLanes duration={840} playhead={492} lanes={LANES} className='rounded-lg border' /> }
 
+/** The timeline lanes with clock times, for a recording that started at 09:30. */
+export const TimelineClock: Story = { render: () => <TimelineLanes duration={840} playhead={492} lanes={LANES} startsAt={new Date(2026, 10, 27, 9, 30)} className='rounded-lg border' /> }
+
 /** The status bar. */
 export const Status: Story = { render: () => STATUS }
 

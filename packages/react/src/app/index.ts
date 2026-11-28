@@ -1,6 +1,6 @@
 export { AppShell } from './app-shell.component'
 export type { AppCommand, AppNavItem, AppShellProps } from './app-shell.component'
-export { useCommandShortcut } from './command-shortcut.hook'
+export { commandShortcutLabel, useCommandShortcut, useCommandShortcutLabel } from './command-shortcut.hook'
 export { FilterBar, FilterChip } from './filter-bar.component'
 export type { FilterBarProps, FilterChipProps } from './filter-bar.component'
 export { FormSection } from './form-section.component'

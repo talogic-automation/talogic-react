@@ -106,7 +106,7 @@ Create the app stylesheet and import it once in `main.tsx`:
 @import "@talogic/react/fonts.css";
 
 /* Tailwind generates only the classes it finds. This line makes it read the component library too. */
-@source "../node_modules/@talogic/react/dist";
+@source "../node_modules/@talogic/react";
 ```
 
 ```ts
@@ -196,7 +196,7 @@ slice by slice, not in one change. Chakra and the Talogic components can run sid
    @import "tailwindcss/utilities.css" layer(utilities);
    @import "@talogic/react/tokens.css";
    @import "@talogic/react/fonts.css";
-   @source "../node_modules/@talogic/react/dist";
+   @source "../node_modules/@talogic/react";
    ```
 
 2. Set `data-product="pargic" class="d-app"` on `<html>`. Chakra already uses the `dark` class for its dark mode,

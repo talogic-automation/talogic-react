@@ -1,1 +1,1 @@
-export { formatTimecode } from './timecode.mapper'
+export { formatClockTime, formatTimecode } from './timecode.mapper'

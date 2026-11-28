@@ -19,3 +19,16 @@ export function formatTimecode (seconds: number, withHours = false): string {
 
   return withHours || hours > 0 ? `${pad(hours)}:${pad(minutes)}:${pad(rest)}` : `${pad(minutes)}:${pad(rest)}`
 }
+
+/**
+ * Gives the 24-hour clock time, such as 09:30, at a number of seconds after a start time, in the local time zone.
+ *
+ * @param startsAt - The clock time at second zero.
+ * @param seconds - The seconds after the start.
+ * @returns The time as hours and minutes.
+ */
+export function formatClockTime (startsAt: Date, seconds: number): string {
+  const time = new Date(startsAt.getTime() + seconds * 1000)
+
+  return `${pad(time.getHours())}:${pad(time.getMinutes())}`
+}

@@ -1,12 +1,15 @@
-/** The panel of a drop-down or context menu: popover colours, medium elevation, 4 px inset. */
-export const menuContentClassName = 'z-50 min-w-48 overflow-hidden rounded-lg border bg-popover p-1 text-popover-foreground shadow-md'
+/** The panel of a drop-down or context menu: popover colours, medium elevation, 4 px inset; it zooms in from its anchor. */
+export const menuContentClassName = [
+  'z-50 min-w-48 overflow-hidden rounded-lg border bg-popover p-1 text-popover-foreground shadow-md',
+  'data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out motion-reduce:data-[state=open]:animate-fade-in motion-reduce:data-[state=closed]:animate-fade-out',
+].join(' ')
 
 /**
  * One row of a menu: 13.5 px text, a muted 16 px icon, the accent colour on focus. `data-variant=destructive`
  * turns the row and its icon red.
  */
 export const menuItemClassName = [
-  'relative flex cursor-default select-none items-center gap-2.5 rounded-sm px-2.5 py-[7px] text-[13.5px] outline-none',
+  'relative flex cursor-default select-none items-center gap-2.5 rounded-sm px-2.5 py-[7px] text-[13.5px] outline-none transition-colors duration-150 motion-reduce:transition-none',
   'focus:bg-accent data-disabled:pointer-events-none data-disabled:opacity-50',
   '[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground',
   'data-[variant=destructive]:text-destructive data-[variant=destructive]:[&_svg]:text-destructive',

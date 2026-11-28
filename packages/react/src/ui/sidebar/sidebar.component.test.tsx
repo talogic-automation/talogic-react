@@ -63,11 +63,13 @@ describe('Sidebar', () => {
     expect(screen.queryByRole('button', { name: /OCR/ })).not.toBeInTheDocument()
   })
 
-  it('collapses to a rail of icon buttons named after their items, and expands again', async () => {
+  it('collapses to a rail whose items keep their names, and expands again', async () => {
     render(<Plugins />)
     await userEvent.click(screen.getByRole('button', { name: 'Hide plugins' }))
 
-    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument()
+    // The search stays in place while the sidebar narrows, but it fades and cannot be reached.
+    expect(screen.getByRole('complementary', { name: 'Plugins' })).toHaveAttribute('data-collapsed', 'true')
+    expect(screen.getByRole('searchbox', { hidden: true }).closest('[inert]')).not.toBeNull()
     expect(screen.getByRole('button', { name: 'OCR' })).toBeInTheDocument()
 
     await userEvent.click(screen.getByRole('button', { name: 'Show plugins' }))

@@ -24,7 +24,7 @@ export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 export function DropdownMenuContent ({ className, sideOffset = 6, ...props }: ComponentProps<typeof DropdownMenuPrimitive.Content>) {
   return (
     <DropdownMenuPrimitive.Portal>
-      <DropdownMenuPrimitive.Content data-slot='dropdown-menu-content' sideOffset={sideOffset} className={cn(menuContentClassName, className)} {...props} />
+      <DropdownMenuPrimitive.Content data-slot='dropdown-menu-content' sideOffset={sideOffset} className={cn(menuContentClassName, 'origin-(--radix-dropdown-menu-content-transform-origin)', className)} {...props} />
     </DropdownMenuPrimitive.Portal>
   )
 }

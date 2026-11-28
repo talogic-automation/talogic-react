@@ -1,6 +1,7 @@
 import { Popover as PopoverPrimitive } from 'radix-ui'
 import type { ComponentProps } from 'react'
 import { cn } from '../../class-names'
+import { floatingMotionClassName } from './overlay.recipe'
 
 /** The shadcn/ui Popover root (Radix). */
 export const Popover = PopoverPrimitive.Root
@@ -24,7 +25,7 @@ export function PopoverContent ({ className, align = 'center', sideOffset = 6, .
         data-slot='popover-content'
         align={align}
         sideOffset={sideOffset}
-        className={cn('z-50 w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none', className)}
+        className={cn('z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none', floatingMotionClassName, className)}
         {...props}
       />
     </PopoverPrimitive.Portal>

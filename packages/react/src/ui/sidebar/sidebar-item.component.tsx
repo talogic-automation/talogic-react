@@ -33,8 +33,8 @@ export interface SidebarItemProps extends Omit<ComponentProps<'button'>, 'title'
 
 /**
  * One entry of a {@link Sidebar}. In the `panel` variant: a colour bar or an icon, the title and a meta line; it can
- * be dragged, for example onto a canvas. In the `nav` variant: an icon and a label that fades in place when the
- * sidebar collapses. Collapsed, both show the title in a tooltip.
+ * be dragged, for example onto a canvas. In the `nav` variant: an icon and a label. In both, the text slides away
+ * while the sidebar collapses and the bar or icon stays put; collapsed, the title shows in a tooltip.
  *
  * @param props - Title, meta, icon or colour, the active state, `asChild` and any button props.
  * @returns The item.
@@ -54,25 +54,23 @@ export function SidebarItem ({ title, meta, icon, hue, color = 'var(--muted-fore
     : (
         <>
           {icon
-            ? <span aria-hidden='true' className='flex shrink-0 text-muted-foreground group-aria-[current]/item:text-brand-text [&_svg]:size-4'>{icon}</span>
-            : <span aria-hidden='true' className={cn('shrink-0 rounded-[3px]', collapsed ? 'size-3' : 'h-6 w-2.5', hue ? HUE_FILL[hue] : '')} style={hue ? undefined : { background: color }} />}
-          {!collapsed && (
-            <span className='flex min-w-0 flex-col'>
-              <span className='truncate text-[13px] font-medium'>{title}</span>
-              {meta && <span className='truncate font-mono text-[10.5px] leading-tight text-muted-foreground'>{meta}</span>}
-            </span>
-          )}
-          {!collapsed && badge !== undefined && <span className='ms-auto text-[11px] text-muted-foreground tabular-nums'>{badge}</span>}
+            ? <span aria-hidden='true' className='flex w-2.5 shrink-0 justify-center text-muted-foreground group-aria-[current]/item:text-brand-text [&_svg]:size-4'>{icon}</span>
+            : <span aria-hidden='true' className={cn('h-6 w-2.5 shrink-0 rounded-[3px]', hue ? HUE_FILL[hue] : '')} style={hue ? undefined : { background: color }} />}
+          <span className={cn('flex flex-col', fadingLabelClassName)}>
+            <span className='truncate text-[13px] font-medium'>{title}</span>
+            {meta && <span className='truncate font-mono text-[10.5px] leading-tight text-muted-foreground'>{meta}</span>}
+          </span>
+          {badge !== undefined && <span className={cn('ms-auto text-[11px] text-muted-foreground tabular-nums', fadingLabelClassName)}>{badge}</span>}
         </>
       )
 
   const classes = variant === 'nav'
     ? cn(navRowClassName, className)
     : cn(
-        'group/item flex cursor-pointer items-center rounded-md border border-transparent text-start text-sidebar-foreground no-underline outline-none',
+        'group/item flex cursor-pointer items-center rounded-md border border-transparent text-start text-sidebar-foreground no-underline outline-none transition-colors duration-150 motion-reduce:transition-none',
         'hover:border-sidebar-border hover:bg-background focus-visible:ring-2 focus-visible:ring-sidebar-ring disabled:cursor-not-allowed disabled:opacity-50',
         'aria-[current]:border-transparent aria-[current]:bg-brand-soft aria-[current]:text-brand-text',
-        collapsed ? 'size-9 justify-center' : 'w-full gap-2 px-2 py-1.5',
+        'w-full gap-2 px-[13px] py-1.5',
         className,
       )
 

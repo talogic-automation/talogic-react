@@ -21,6 +21,7 @@ export interface SidebarSheetProps {
 
 /**
  * The sidebar on a phone: a button that opens the {@link Sidebar} in a sheet from the side, at the mobile density.
+ * The sheet slides in and the labels slide into place, as when the desktop sidebar widens.
  * Close the sheet when the user picks an item, with `open` and `onOpenChange`.
  *
  * @param props - The label, the sidebar, the side and the open state.
@@ -32,7 +33,7 @@ export function SidebarSheet ({ label, children, side = 'start', open, onOpenCha
       <SheetTrigger asChild>
         <Button variant='ghost' size='icon' aria-label={`Show ${label.toLowerCase()}`} className={className}><PanelLeft /></Button>
       </SheetTrigger>
-      <SheetContent side={side} className='d-mob w-[min(320px,86vw)] gap-0 p-0 [&>[data-slot=sidebar]]:border-0'>
+      <SheetContent data-slot='sidebar-sheet' side={side} className='d-mob w-[min(320px,86vw)] gap-0 p-0 [&>[data-slot=sidebar]]:border-0'>
         <SheetTitle className='sr-only'>{label}</SheetTitle>
         {children}
       </SheetContent>

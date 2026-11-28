@@ -14,7 +14,7 @@ export function NavigationMenu ({ className, children, ...props }: ComponentProp
     <NavigationMenuPrimitive.Root data-slot='navigation-menu' className={cn('relative flex items-center', className)} {...props}>
       {children}
       <div className='absolute start-0 top-full flex justify-center'>
-        <NavigationMenuPrimitive.Viewport className='relative mt-2 h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-xl border bg-popover text-popover-foreground shadow-lg md:w-(--radix-navigation-menu-viewport-width)' />
+        <NavigationMenuPrimitive.Viewport className='relative mt-2 h-(--radix-navigation-menu-viewport-height) w-full origin-top overflow-hidden rounded-xl border bg-popover text-popover-foreground transition-[width,height] duration-200 data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out motion-reduce:transition-none motion-reduce:data-[state=open]:animate-fade-in motion-reduce:data-[state=closed]:animate-fade-out shadow-lg md:w-(--radix-navigation-menu-viewport-width)' />
       </div>
     </NavigationMenuPrimitive.Root>
   )
@@ -33,7 +33,7 @@ export function NavigationMenuList ({ className, ...props }: ComponentProps<type
 /** One entry of a {@link NavigationMenuList}. */
 export const NavigationMenuItem = NavigationMenuPrimitive.Item
 
-const triggerClassName = 'inline-flex h-[calc(var(--control-h)-6px)] cursor-pointer items-center gap-1 rounded-md bg-transparent px-3 text-[15px] font-medium text-foreground no-underline outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:bg-accent'
+const triggerClassName = 'inline-flex h-[calc(var(--control-h)-6px)] cursor-pointer items-center gap-1 rounded-md bg-transparent px-3 text-[15px] font-medium text-foreground no-underline outline-none transition-colors duration-150 motion-reduce:transition-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring data-[state=open]:bg-accent'
 
 /**
  * A top-level entry that opens a panel.
@@ -45,7 +45,7 @@ export function NavigationMenuTrigger ({ className, children, ...props }: Compon
   return (
     <NavigationMenuPrimitive.Trigger data-slot='navigation-menu-trigger' className={cn(triggerClassName, 'group', className)} {...props}>
       {children}
-      <ChevronDown className='size-4 transition-transform group-data-[state=open]:rotate-180' aria-hidden='true' />
+      <ChevronDown className='size-4 transition-transform duration-200 ease-emphasised group-data-[state=open]:rotate-180 motion-reduce:transition-none' aria-hidden='true' />
     </NavigationMenuPrimitive.Trigger>
   )
 }

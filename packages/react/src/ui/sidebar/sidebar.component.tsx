@@ -24,7 +24,7 @@ export interface SidebarProps extends Omit<ComponentProps<'aside'>, 'aria-label'
 }
 
 const widths: Record<SidebarVariant, { open: string, collapsed: string }> = {
-  panel: { open: 'w-full gap-2 p-2.5', collapsed: 'w-12 items-center gap-1 px-1.5 py-2' },
+  panel: { open: 'w-64 gap-2 px-1.5 py-2.5', collapsed: 'w-12 gap-2 px-1.5 pt-2.5 pb-24' },
   nav:   { open: 'w-60 gap-4 px-2 py-3', collapsed: 'w-14 gap-4 px-2 py-3' },
 }
 
@@ -57,15 +57,20 @@ export function Sidebar ({ label, variant = 'panel', side = 'start', collapsed, 
         className={cn(
           'group/sidebar flex h-full min-h-0 shrink-0 flex-col overflow-hidden bg-sidebar text-[13px] text-sidebar-foreground',
           side === 'start' ? 'border-e border-sidebar-border' : 'border-s border-sidebar-border',
-          variant === 'nav' && 'transition-[width] duration-300 ease-emphasised motion-reduce:transition-none',
+          'relative transition-[width] duration-150 ease-out motion-reduce:transition-none',
           isCollapsed ? widths[variant].collapsed : widths[variant].open,
           className,
         )}
         {...props}
       >
         {children}
-        {variant === 'panel' && isCollapsed && (
-          <span aria-hidden='true' className='mt-auto py-2 text-xs font-semibold tracking-[0.06em] text-muted-foreground uppercase [writing-mode:vertical-rl]'>{label}</span>
+        {variant === 'panel' && (
+          <span
+            aria-hidden='true'
+            className='pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-xs font-semibold tracking-[0.06em] text-muted-foreground uppercase opacity-0 transition-opacity duration-150 [writing-mode:vertical-rl] group-data-[collapsed]/sidebar:opacity-100 group-data-[collapsed]/sidebar:delay-100 motion-reduce:transition-none'
+          >
+            {label}
+          </span>
         )}
       </aside>
     </SidebarContext>
@@ -158,15 +163,16 @@ export interface SidebarHeaderProps {
 export function SidebarHeader ({ query = '', onQueryChange, searchLabel, children, className }: SidebarHeaderProps) {
   const { collapsed, label, variant } = useSidebar()
   if (variant === 'nav') return <div data-slot='sidebar-header' className={cn('flex h-8 items-center', className)}>{children}</div>
-  if (collapsed) return <SidebarCollapseButton />
   const searchText = searchLabel ?? `Search ${label.toLowerCase()}`
 
   return (
     <div data-slot='sidebar-header' className={cn('flex items-center gap-1', className)}>
-      {onQueryChange && (
-        <Input type='search' value={query} onChange={(event) => onQueryChange(event.target.value)} placeholder={searchText} aria-label={searchText} startIcon={<Search />} />
-      )}
-      {children}
+      <div inert={collapsed} className='flex min-w-0 flex-1 items-center gap-1 transition-opacity duration-150 group-data-[collapsed]/sidebar:opacity-0 motion-reduce:transition-none'>
+        {onQueryChange && (
+          <Input type='search' value={query} onChange={(event) => onQueryChange(event.target.value)} placeholder={searchText} aria-label={searchText} startIcon={<Search />} />
+        )}
+        {children}
+      </div>
       <SidebarCollapseButton className='ms-auto' />
     </div>
   )
@@ -179,8 +185,14 @@ export function SidebarHeader ({ query = '', onQueryChange, searchLabel, childre
  * @returns The body.
  */
 export function SidebarContent ({ className, ...props }: ComponentProps<'div'>) {
-  const { collapsed, label, variant } = useSidebar()
-  const classes = cn('flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto', variant === 'panel' && collapsed ? 'items-center gap-1' : 'gap-4', variant === 'panel' && !collapsed && 'gap-3', className)
+  const { label, variant } = useSidebar()
+  // A thin scrollbar when open; none on the narrow rail, where it would push the icons aside (it still scrolls).
+  const classes = cn(
+    'flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto [scrollbar-width:thin]',
+    'group-data-[collapsed]/sidebar:[scrollbar-width:none] group-data-[collapsed]/sidebar:[&::-webkit-scrollbar]:hidden',
+    variant === 'panel' ? 'gap-3' : 'gap-4',
+    className,
+  )
 
   return variant === 'nav' ? <nav data-slot='sidebar-content' aria-label={label} className={classes} {...props} /> : <div data-slot='sidebar-content' className={classes} {...props} />
 }

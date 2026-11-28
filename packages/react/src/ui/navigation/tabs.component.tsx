@@ -1,5 +1,6 @@
 import { Tabs as TabsPrimitive } from 'radix-ui'
 import type { ComponentProps } from 'react'
+import { activeIndicatorClassName, useActiveIndicator } from '../active-indicator'
 import { cn } from '../../class-names'
 
 /**
@@ -22,23 +23,34 @@ export interface TabsListProps extends ComponentProps<typeof TabsPrimitive.List>
 }
 
 /**
- * The row of {@link TabsTrigger}s.
+ * The row of {@link TabsTrigger}s. One indicator slides to the active tab and takes its size: the raised
+ * background of the `pill` variant, or the brand line of the `underline` variant.
  *
  * @param props - `variant` and Radix Tabs list props.
  * @returns The tab list.
  */
-export function TabsList ({ className, variant = 'pill', ...props }: TabsListProps) {
+export function TabsList ({ className, variant = 'pill', children, ...props }: TabsListProps) {
+  const indicator = useActiveIndicator<HTMLDivElement>('[data-state=active]')
+
   return (
     <TabsPrimitive.List
+      ref={indicator}
       data-slot='tabs-list'
       data-variant={variant}
       className={cn(
-        'group/tabs-list inline-flex w-fit items-center',
+        'group/tabs-list group/indicator relative inline-flex w-fit items-center',
         variant === 'pill' ? 'gap-0.5 rounded-md bg-muted p-[3px]' : 'w-full gap-5 border-b',
         className,
       )}
       {...props}
-    />
+    >
+      <span
+        aria-hidden='true'
+        data-slot='tabs-indicator'
+        className={cn(activeIndicatorClassName, variant === 'pill' ? 'rounded-sm bg-background shadow-xs' : 'top-auto -bottom-px h-0.5 bg-brand')}
+      />
+      {children}
+    </TabsPrimitive.List>
   )
 }
 
@@ -56,9 +68,9 @@ export function TabsTrigger ({ className, ...props }: ComponentProps<typeof Tabs
         'inline-flex cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap font-medium text-muted-foreground outline-none',
         'hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4',
         'group-data-[variant=pill]/tabs-list:h-[calc(var(--control-h)-6px)] group-data-[variant=pill]/tabs-list:rounded-sm group-data-[variant=pill]/tabs-list:px-3 group-data-[variant=pill]/tabs-list:text-[13px]',
-        'group-data-[variant=pill]/tabs-list:data-[state=active]:bg-background group-data-[variant=pill]/tabs-list:data-[state=active]:text-foreground group-data-[variant=pill]/tabs-list:data-[state=active]:shadow-xs',
+        'relative transition-colors duration-150 data-[state=active]:text-foreground motion-reduce:transition-none',
         'group-data-[variant=underline]/tabs-list:-mb-px group-data-[variant=underline]/tabs-list:border-b-2 group-data-[variant=underline]/tabs-list:border-transparent group-data-[variant=underline]/tabs-list:py-2.5 group-data-[variant=underline]/tabs-list:text-sm',
-        'group-data-[variant=underline]/tabs-list:data-[state=active]:border-brand group-data-[variant=underline]/tabs-list:data-[state=active]:text-foreground',
+
         className,
       )}
       {...props}

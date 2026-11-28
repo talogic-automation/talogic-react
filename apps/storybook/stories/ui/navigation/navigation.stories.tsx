@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
+import { Button } from '@talogic-automation/react'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@talogic-automation/react'
 import { MenuIcon } from '@talogic-automation/react'
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from '@talogic-automation/react'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@talogic-automation/react'
 import { Pagination } from '@talogic-automation/react'
+import { Stepper } from '@talogic-automation/react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@talogic-automation/react'
 
 const meta = {
@@ -116,6 +118,31 @@ export const MenuToggle: Story = {
       >
         <MenuIcon open={open} className='size-8' />
       </button>
+    )
+  },
+}
+
+const SETUP_STEPS = [
+  { title: 'Device', description: 'Simulated' },
+  { title: 'Models', description: '2 of 3 downloaded' },
+  { title: 'Your voice' },
+  { title: 'Privacy' },
+]
+
+/** A stepper shows the progress of a setup flow. Pick a done step to go back to it. */
+export const Steppers: Story = {
+  render: function Render () {
+    const [current, setCurrent] = useState(1)
+
+    return (
+      <div className='flex flex-col gap-8'>
+        <Stepper steps={SETUP_STEPS} current={current} onStepSelect={setCurrent} />
+        <Stepper steps={SETUP_STEPS} current={current} orientation='vertical' onStepSelect={setCurrent} />
+        <div className='flex gap-2'>
+          <Button variant='outline' onClick={() => setCurrent((step) => Math.max(0, step - 1))}>Back</Button>
+          <Button onClick={() => setCurrent((step) => Math.min(SETUP_STEPS.length, step + 1))}>Continue</Button>
+        </div>
+      </div>
     )
   },
 }

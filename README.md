@@ -78,7 +78,7 @@ the file and the rule disagree. `--primary-foreground`, `--sidebar-primary-foreg
 | Slice | Contents |
 |---|---|
 | `tokens` | `tokens.css`, `fonts.css`, `ThemeRoot`, `themeAttributes`, product and hue lists, `PRODUCT_HUES`, `FAMILY_PALETTE`, `HUE_FILL` |
-| `ui` | shadcn/ui primitives: button, badge, avatar, field (label, input, textarea, select), choice (checkbox, radio group, switch, slider, toggle group), navigation (tabs, breadcrumb, pagination, navigation menu, menubar), overlay (dialog, alert dialog, sheet, drawer, popover, tooltip), menu (dropdown menu, context menu, command), feedback (alert, toaster, progress, skeleton, spinner, empty state), layout (card, separator, scroll area, resizable, accordion, table, kbd) |
+| `ui` | shadcn/ui primitives: button, badge, avatar, field (label, input, textarea, select), choice (checkbox, radio group, switch, slider, toggle group), navigation (tabs, breadcrumb, pagination, stepper, navigation menu, menubar), overlay (dialog, alert dialog, sheet, drawer, popover, tooltip), menu (dropdown menu, context menu, command), feedback (alert, toaster, progress, skeleton, spinner, empty state), layout (card, separator, scroll area, resizable, accordion, table, kbd) |
 | `product` | `ProductLogo`, `ProductSwitcher`, `PRODUCT_CATALOGUE` |
 | `status` | `StatusBadge` and the run statuses, with the same word and colour in every product |
 | `web` | `SiteHeader`, `Hero`, `ProductCard`, `FeatureGrid`, `HowItWorks`, `PricingTable`, `Faq`, `CtaBand`, `SiteFooter` |

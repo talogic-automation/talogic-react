@@ -87,7 +87,7 @@ export function MobileMenu ({ links, actions, label = 'Main', className }: Mobil
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay
           data-slot='mobile-menu-backdrop'
-          className='fixed inset-0 z-50 bg-ink/30 backdrop-blur-[6px] backdrop-grayscale dark:bg-black/50 data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in data-[state=closed]:[animation-duration:340ms] data-[state=open]:[animation-duration:420ms]'
+          className='fixed inset-0 z-50 backdrop-blur-[5px] backdrop-contrast-[.5] backdrop-saturate-[.3] backdrop-brightness-[1.3] dark:backdrop-brightness-[.7] data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in data-[state=closed]:[animation-duration:340ms] data-[state=open]:[animation-duration:420ms]'
         />
         <DialogPrimitive.Content
           data-slot='mobile-menu'
@@ -112,7 +112,7 @@ export function MobileMenu ({ links, actions, label = 'Main', className }: Mobil
                       href={link.href}
                       onClick={() => changeOpen(false)}
                       style={{ animationDelay: `${120 + index * 45}ms` }}
-                      className='animate-menu-item-in rounded-md px-2 py-3 text-base font-medium text-foreground no-underline outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring motion-reduce:animate-fade-in'
+                      className='animate-menu-item-in rounded-md px-2 py-3 text-base font-medium text-foreground no-underline outline-none transition-colors duration-150 hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring motion-reduce:animate-fade-in'
                     >
                       {link.label}
                     </a>

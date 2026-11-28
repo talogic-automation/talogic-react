@@ -23,7 +23,7 @@ import {
   SidebarItem,
   SidebarSheet,
 } from '../ui'
-import { useCommandShortcut } from './command-shortcut.hook'
+import { useCommandShortcut, useCommandShortcutLabel } from './command-shortcut.hook'
 
 /** An entry of the app sidebar. */
 export interface AppNavItem {
@@ -62,7 +62,7 @@ export interface AppShellProps {
   breadcrumb?:      ReactNode
   /** Icon buttons at the end of the top bar. */
   topActions?:      ReactNode
-  /** The commands of the ⌘K palette. Without commands, the search button and shortcut are hidden. */
+  /** The commands of the palette, opened with ⌘K or Ctrl+K. Without commands, the search button and shortcut are hidden. */
   commands?:        readonly AppCommand[]
   /** The page. */
   children:         ReactNode
@@ -72,7 +72,7 @@ export interface AppShellProps {
 /**
  * The AppShell pattern of a web portal: the `nav` Sidebar with the product switcher, search, navigation, a footer
  * card and the user, beside a top bar and the page. The sidebar collapses to its icons; on a phone it opens in a
- * sheet from the top bar. ⌘K or Ctrl K opens the command palette.
+ * sheet from the top bar. ⌘K or Ctrl+K opens the command palette; the search shows the one for the user's system.
  *
  * @param props - Product, navigation, user, top bar, commands and the page.
  * @returns The shell.
@@ -81,6 +81,7 @@ export function AppShell ({ product, workspace, onProductChange, nav, secondaryN
   const [paletteOpen, setPaletteOpen] = useState(false)
   const openPalette = useCallback(() => setPaletteOpen(true), [])
   useCommandShortcut(openPalette, Boolean(commands?.length))
+  const shortcut = useCommandShortcutLabel()
   const groups = [...new Set(commands?.map((command) => command.group))]
   const link = (item: AppNavItem) => (
     <SidebarItem key={item.href} asChild title={item.label} icon={item.icon} badge={item.count} active={item.current}>
@@ -94,7 +95,7 @@ export function AppShell ({ product, workspace, onProductChange, nav, secondaryN
       </SidebarHeader>
       <SidebarContent>
         {commands?.length
-          ? <SidebarItem title='Search' icon={<Search />} badge={<Kbd className='border-0 bg-transparent'>⌘K</Kbd>} onClick={openPalette} />
+          ? <SidebarItem title='Search' icon={<Search />} badge={<Kbd className='border-0 bg-transparent'>{shortcut}</Kbd>} onClick={openPalette} />
           : null}
         <div className='flex flex-col gap-0.5'>{nav.map((item) => link(item))}</div>
         {secondaryNav && <SidebarGroup title={secondaryNav.title}>{secondaryNav.items.map((item) => link(item))}</SidebarGroup>}

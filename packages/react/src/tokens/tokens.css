@@ -4,7 +4,7 @@
  * Consumers that run Tailwind import this file after Tailwind itself:
  *   @import "tailwindcss";
  *   @import "@talogic/react/tokens.css";
- *   @source "../node_modules/@talogic/react/dist";
+ *   @source "../node_modules/@talogic/react";
  * The fonts are a separate import, @talogic/react/fonts.css, resolved by the consumer's bundler.
  *
  * Switches, all on any element (usually <html>):

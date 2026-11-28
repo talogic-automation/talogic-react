@@ -33,7 +33,7 @@ With Tailwind CSS v4 in the consuming app:
 @import "tailwindcss";
 @import "@talogic/react/tokens.css";
 @import "@talogic/react/fonts.css";
-@source "../node_modules/@talogic/react/dist";
+@source "../node_modules/@talogic/react";
 ```
 
 Without Tailwind, import the compiled stylesheet and the fonts:

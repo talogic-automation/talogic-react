@@ -1,5 +1,5 @@
 import { cn } from '../class-names'
-import { formatTimecode } from '../timecode'
+import { formatClockTime, formatTimecode } from '../timecode'
 import { HUE_FILL, type Hue } from '../tokens'
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui'
 import { timelineBox, timelineTicks } from './timeline.algorithm'
@@ -33,23 +33,29 @@ export interface TimelineLanesProps {
   playhead?:  number
   /** How many ruler ticks. Default 8. */
   tickCount?: number
+  /**
+   * The clock time at second zero, such as the start of a recording. With it, the ruler and the span names show
+   * clock times, such as 09:30. Without it, they show the media time from 00:00.
+   */
+  startsAt?:  Date
   className?: string
 }
 
 /**
  * The Timeline lanes pattern of a desktop media app: a ruler, one lane per result kind with coloured spans,
- * and a playhead.
+ * and a playhead. The ruler shows media time, or clock time with `startsAt`.
  *
- * @param props - Duration, lanes, playhead and tick count.
+ * @param props - Duration, lanes, playhead, tick count and the clock start.
  * @returns The timeline.
  */
-export function TimelineLanes ({ duration, lanes, playhead, tickCount = 8, className }: TimelineLanesProps) {
+export function TimelineLanes ({ duration, lanes, playhead, tickCount = 8, startsAt, className }: TimelineLanesProps) {
+  const label = (seconds: number): string => startsAt ? formatClockTime(startsAt, seconds) : formatTimecode(seconds)
   const head = playhead === undefined ? undefined : timelineBox(0, playhead, duration).width
 
   return (
     <div data-slot='timeline-lanes' role='group' aria-label='Timeline' className={cn('relative flex flex-col text-[13px]', className)}>
       <div className='flex h-[26px] items-center border-b ps-[118px] pe-2.5' aria-hidden='true'>
-        {timelineTicks(duration, tickCount).map((tick) => <span key={tick} className='flex-1 text-xs tabular-nums text-muted-foreground'>{formatTimecode(tick)}</span>)}
+        {timelineTicks(duration, tickCount).map((tick) => <span key={tick} className='flex-1 text-xs tabular-nums text-muted-foreground'>{label(tick)}</span>)}
       </div>
       {lanes.map((lane) => (
         <div key={lane.name} className='flex h-[46px] items-center border-b'>
@@ -60,7 +66,7 @@ export function TimelineLanes ({ duration, lanes, playhead, tickCount = 8, class
           <div className='relative me-2.5 h-[26px] flex-1'>
             {lane.segments.map((segment) => {
               const box = timelineBox(segment.start, segment.end, duration)
-              const name = `${lane.name}${segment.label ? `, ${segment.label}` : ''}, ${formatTimecode(segment.start)} to ${formatTimecode(segment.end)}`
+              const name = `${lane.name}${segment.label ? `, ${segment.label}` : ''}, ${label(segment.start)} to ${label(segment.end)}`
 
               return (
                 <Tooltip key={`${segment.start}-${segment.end}`}>

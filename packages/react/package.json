@@ -16,18 +16,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./tokens.css": "./src/tokens/tokens.css",
-    "./fonts.css": "./src/tokens/fonts.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./fonts.css": "./dist/fonts.css",
     "./styles.css": "./dist/talogic-react.css"
   },
   "files": [
-    "dist",
-    "src/tokens/tokens.css",
-    "src/tokens/fonts.css"
+    "dist"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json && vite build && npm run build:css",
-    "build:css": "tailwindcss -i src/tokens/styles.css -o dist/talogic-react.css --minify",
+    "build:css": "tailwindcss -i src/tokens/styles.css -o dist/talogic-react.css --minify && node tools/copy-styles.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint . --cache",
     "format": "eslint . --fix --cache",

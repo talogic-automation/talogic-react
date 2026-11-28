@@ -6,3 +6,4 @@ export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from './popove
 export { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from './sheet.component'
 export type { SheetContentProps } from './sheet.component'
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip.component'
+export { floatingMotionClassName, overlayClassName, sheetMotionClassName } from './overlay.recipe'

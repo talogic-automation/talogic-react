@@ -3,6 +3,7 @@ import { Search } from 'lucide-react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
 import type { ComponentProps, ReactNode } from 'react'
 import { cn } from '../../class-names'
+import { floatingMotionClassName, overlayClassName } from '../overlay'
 import { menuItemClassName, menuSeparatorClassName, menuShortcutClassName } from './menu.recipe'
 
 /**
@@ -32,8 +33,8 @@ export function CommandDialog ({ title = 'Search', children, ...props }: Command
   return (
     <DialogPrimitive.Root {...props}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className='fixed inset-0 z-50 bg-black/45' />
-        <DialogPrimitive.Content className='fixed start-1/2 top-[18%] z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 overflow-hidden rounded-xl border bg-popover shadow-lg outline-none rtl:translate-x-1/2'>
+        <DialogPrimitive.Overlay className={overlayClassName} />
+        <DialogPrimitive.Content className={cn('fixed start-1/2 top-[18%] z-50 w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 overflow-hidden rounded-xl border bg-popover shadow-lg outline-none rtl:translate-x-1/2', floatingMotionClassName)}>
           <DialogPrimitive.Title className='sr-only'>{title}</DialogPrimitive.Title>
           <DialogPrimitive.Description className='sr-only'>Type to filter the commands.</DialogPrimitive.Description>
           <Command>{children}</Command>

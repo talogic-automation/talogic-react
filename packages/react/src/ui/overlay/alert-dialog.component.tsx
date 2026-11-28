@@ -2,7 +2,7 @@ import { AlertDialog as AlertDialogPrimitive } from 'radix-ui'
 import type { ComponentProps } from 'react'
 import { buttonVariants, type ButtonVariants } from '../button'
 import { cn } from '../../class-names'
-import { overlayClassName } from './overlay.recipe'
+import { floatingMotionClassName, overlayClassName } from './overlay.recipe'
 
 /** The shadcn/ui AlertDialog root: a dialog that needs an answer, such as a delete confirmation. */
 export const AlertDialog = AlertDialogPrimitive.Root
@@ -22,7 +22,7 @@ export function AlertDialogContent ({ className, ...props }: ComponentProps<type
       <AlertDialogPrimitive.Overlay className={overlayClassName} />
       <AlertDialogPrimitive.Content
         data-slot='alert-dialog-content'
-        className={cn('fixed start-1/2 top-1/2 z-50 grid w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl border bg-popover p-6 text-popover-foreground shadow-lg outline-none rtl:translate-x-1/2', className)}
+        className={cn('fixed start-1/2 top-1/2 z-50 grid w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl border bg-popover p-6 text-popover-foreground shadow-lg outline-none rtl:translate-x-1/2', floatingMotionClassName, className)}
         {...props}
       />
     </AlertDialogPrimitive.Portal>

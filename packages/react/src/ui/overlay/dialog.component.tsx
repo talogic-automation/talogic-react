@@ -2,7 +2,7 @@ import { X } from 'lucide-react'
 import { Dialog as DialogPrimitive } from 'radix-ui'
 import type { ComponentProps } from 'react'
 import { cn } from '../../class-names'
-import { overlayClassName } from './overlay.recipe'
+import { floatingMotionClassName, overlayClassName } from './overlay.recipe'
 
 /** The shadcn/ui Dialog root (Radix). */
 export const Dialog = DialogPrimitive.Root
@@ -31,7 +31,7 @@ export function DialogContent ({ className, children, showClose = true, ...props
       <DialogPrimitive.Overlay className={overlayClassName} />
       <DialogPrimitive.Content
         data-slot='dialog-content'
-        className={cn('fixed start-1/2 top-1/2 z-50 grid w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl border bg-popover p-6 text-popover-foreground shadow-lg outline-none rtl:translate-x-1/2', className)}
+        className={cn('fixed start-1/2 top-1/2 z-50 grid w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl border bg-popover p-6 text-popover-foreground shadow-lg outline-none rtl:translate-x-1/2', floatingMotionClassName, className)}
         {...props}
       >
         {children}

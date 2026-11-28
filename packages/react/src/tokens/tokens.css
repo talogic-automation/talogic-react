@@ -375,6 +375,19 @@
 
   --animate-fade-in: fade-in 180ms ease-out both;
   --animate-fade-out: fade-out 160ms ease-in both;
+  --animate-zoom-in: zoom-in 180ms var(--ease-emphasised) both;
+  --animate-zoom-out: zoom-out 140ms ease-in both;
+  --animate-accordion-down: accordion-down 240ms var(--ease-emphasised) both;
+  --animate-accordion-up: accordion-up 200ms var(--ease-emphasised) both;
+  --animate-sidebar-label-in: sidebar-label-in 220ms ease-out 140ms both;
+  --animate-sheet-in-start: sheet-in-start 320ms var(--ease-emphasised) both;
+  --animate-sheet-out-start: sheet-out-start 240ms ease-in both;
+  --animate-sheet-in-end: sheet-in-end 320ms var(--ease-emphasised) both;
+  --animate-sheet-out-end: sheet-out-end 240ms ease-in both;
+  --animate-sheet-in-top: sheet-in-top 320ms var(--ease-emphasised) both;
+  --animate-sheet-out-top: sheet-out-top 240ms ease-in both;
+  --animate-sheet-in-bottom: sheet-in-bottom 320ms var(--ease-emphasised) both;
+  --animate-sheet-out-bottom: sheet-out-bottom 240ms ease-in both;
   --animate-menu-reveal: menu-reveal 560ms cubic-bezier(0.65, 0, 0.35, 1) both;
   --animate-menu-conceal: menu-conceal 380ms cubic-bezier(0.65, 0, 0.35, 1) both;
   --animate-menu-item-in: menu-item-in 360ms var(--ease-emphasised) both;
@@ -391,6 +404,79 @@
 
   @keyframes fade-out {
     to { opacity: 0; }
+  }
+
+  /* Floating content (dialogs, popovers, tooltips, menus) grows from its anchor as it fades in, and shrinks back. */
+  @keyframes zoom-in {
+    from {
+      opacity: 0;
+      scale: 0.96;
+    }
+  }
+
+  @keyframes zoom-out {
+    to {
+      opacity: 0;
+      scale: 0.96;
+    }
+  }
+
+  /* An accordion answer uncovers to its own height (Radix measures it). */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  /* A sidebar label slides in from the right, as when the sidebar widens (used when a sidebar opens in a sheet). */
+  @keyframes sidebar-label-in {
+    from {
+      translate: 12px 0;
+      opacity: 0;
+    }
+  }
+
+  /* Sheets slide in from their edge. */
+  @keyframes sheet-in-start {
+    from { translate: -100% 0; }
+  }
+
+  @keyframes sheet-out-start {
+    to { translate: -100% 0; }
+  }
+
+  @keyframes sheet-in-end {
+    from { translate: 100% 0; }
+  }
+
+  @keyframes sheet-out-end {
+    to { translate: 100% 0; }
+  }
+
+  @keyframes sheet-in-top {
+    from { translate: 0 -100%; }
+  }
+
+  @keyframes sheet-out-top {
+    to { translate: 0 -100%; }
+  }
+
+  @keyframes sheet-in-bottom {
+    from { translate: 0 100%; }
+  }
+
+  @keyframes sheet-out-bottom {
+    to { translate: 0 100%; }
   }
 
   /* Keeps a closing dialog mounted while its children play their exit animations. */

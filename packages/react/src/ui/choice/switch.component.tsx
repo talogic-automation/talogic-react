@@ -13,13 +13,13 @@ export function Switch ({ className, ...props }: ComponentProps<typeof SwitchPri
     <SwitchPrimitive.Root
       data-slot='switch'
       className={cn(
-        'peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full bg-input p-0.5 outline-none transition-colors',
+        'peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full bg-input p-0.5 outline-none transition-colors duration-200 motion-reduce:transition-none',
         'focus-visible:ring-3 focus-visible:ring-ring/25 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary',
         className,
       )}
       {...props}
     >
-      <SwitchPrimitive.Thumb className='block size-4 rounded-full bg-white shadow-xs transition-transform data-[state=checked]:translate-x-4' />
+      <SwitchPrimitive.Thumb className='block size-4 rounded-full bg-white shadow-xs transition-transform duration-200 ease-emphasised data-[state=checked]:translate-x-4 motion-reduce:transition-none' />
     </SwitchPrimitive.Root>
   )
 }

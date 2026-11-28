@@ -44,7 +44,7 @@ export function MenubarContent ({ className, align = 'start', sideOffset = 6, ..
         data-slot='menubar-content'
         align={align}
         sideOffset={sideOffset}
-        className={cn('z-50 min-w-48 rounded-lg border bg-popover p-1 text-popover-foreground shadow-md', className)}
+        className={cn('z-50 min-w-48 origin-(--radix-menubar-content-transform-origin) rounded-lg border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out motion-reduce:data-[state=open]:animate-fade-in motion-reduce:data-[state=closed]:animate-fade-out', className)}
         {...props}
       />
     </MenubarPrimitive.Portal>

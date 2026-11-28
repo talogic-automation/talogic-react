@@ -18,7 +18,7 @@ export const ContextMenuTrigger = ContextMenuPrimitive.Trigger
 export function ContextMenuContent ({ className, ...props }: ComponentProps<typeof ContextMenuPrimitive.Content>) {
   return (
     <ContextMenuPrimitive.Portal>
-      <ContextMenuPrimitive.Content data-slot='context-menu-content' className={cn(menuContentClassName, className)} {...props} />
+      <ContextMenuPrimitive.Content data-slot='context-menu-content' className={cn(menuContentClassName, 'origin-(--radix-context-menu-content-transform-origin)', className)} {...props} />
     </ContextMenuPrimitive.Portal>
   )
 }

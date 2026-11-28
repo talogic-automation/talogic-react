@@ -1,6 +1,7 @@
 import { Tooltip as TooltipPrimitive } from 'radix-ui'
 import type { ComponentProps } from 'react'
 import { cn } from '../../class-names'
+import { floatingMotionClassName } from './overlay.recipe'
 
 /** Shares the tooltip delay across the app. Put one near the root. */
 export const TooltipProvider = TooltipPrimitive.Provider
@@ -34,7 +35,7 @@ export function TooltipContent ({ className, sideOffset = 6, ...props }: Compone
       <TooltipPrimitive.Content
         data-slot='tooltip-content'
         sideOffset={sideOffset}
-        className={cn('z-50 w-fit rounded-sm bg-foreground px-2.5 py-1.5 text-xs text-background', className)}
+        className={cn('z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-sm bg-foreground px-2.5 py-1.5 text-xs text-background', floatingMotionClassName, className)}
         {...props}
       />
     </TooltipPrimitive.Portal>

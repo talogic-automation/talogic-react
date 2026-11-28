@@ -2,7 +2,7 @@ import { X } from 'lucide-react'
 import { Dialog as SheetPrimitive } from 'radix-ui'
 import type { ComponentProps } from 'react'
 import { cn } from '../../class-names'
-import { overlayClassName } from './overlay.recipe'
+import { overlayClassName, sheetMotionClassName } from './overlay.recipe'
 
 /** The shadcn/ui Sheet root: a dialog that slides in from an edge. */
 export const Sheet = SheetPrimitive.Root
@@ -44,7 +44,7 @@ export function SheetContent ({ className, children, side = 'end', ...props }: S
       <SheetPrimitive.Overlay className={overlayClassName} />
       <SheetPrimitive.Content
         data-slot='sheet-content'
-        className={cn('fixed z-50 flex flex-col gap-4 bg-popover p-6 text-popover-foreground shadow-lg outline-none', sideClassName[side], className)}
+        className={cn('fixed z-50 flex flex-col gap-4 bg-popover p-6 text-popover-foreground shadow-lg outline-none', sideClassName[side], sheetMotionClassName[side], className)}
         {...props}
       >
         {children}

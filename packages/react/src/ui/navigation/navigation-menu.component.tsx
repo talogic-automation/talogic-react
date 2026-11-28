@@ -14,7 +14,7 @@ export function NavigationMenu ({ className, children, ...props }: ComponentProp
     <NavigationMenuPrimitive.Root data-slot='navigation-menu' className={cn('relative flex items-center', className)} {...props}>
       {children}
       <div className='absolute start-0 top-full flex justify-center'>
-        <NavigationMenuPrimitive.Viewport className='relative mt-2 h-(--radix-navigation-menu-viewport-height) w-full origin-top overflow-hidden rounded-xl border bg-popover text-popover-foreground transition-[width,height] duration-200 data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out motion-reduce:transition-none motion-reduce:data-[state=open]:animate-fade-in motion-reduce:data-[state=closed]:animate-fade-out shadow-lg md:w-(--radix-navigation-menu-viewport-width)' />
+        <NavigationMenuPrimitive.Viewport className='relative mt-2 h-(--radix-navigation-menu-viewport-height) w-full origin-top overflow-hidden rounded-xl border bg-popover text-popover-foreground transition-[width,height] duration-200 motion-reduce:transition-none shadow-lg md:w-(--radix-navigation-menu-viewport-width)' />
       </div>
     </NavigationMenuPrimitive.Root>
   )
@@ -57,7 +57,16 @@ export function NavigationMenuTrigger ({ className, children, ...props }: Compon
  * @returns The panel.
  */
 export function NavigationMenuContent ({ className, ...props }: ComponentProps<typeof NavigationMenuPrimitive.Content>) {
-  return <NavigationMenuPrimitive.Content data-slot='navigation-menu-content' className={cn('top-0 start-0 w-full p-2 md:absolute md:w-auto', className)} {...props} />
+  return (
+    <NavigationMenuPrimitive.Content
+      data-slot='navigation-menu-content' className={cn(
+        'top-0 start-0 w-full origin-top p-2 md:absolute md:w-auto',
+        // The panel's content zooms, not the viewport around it: a zoom on the viewport left the panel blank in Chromium.
+        'data-[state=open]:animate-zoom-in data-[state=closed]:animate-zoom-out motion-reduce:data-[state=open]:animate-fade-in motion-reduce:data-[state=closed]:animate-fade-out',
+        className,
+      )} {...props}
+    />
+  )
 }
 
 /**
